@@ -9,7 +9,7 @@ export class Control {
     ) {
       this.element = document.createElement(tagName);
       this.element.className = className;
-      this.element.innerHTML = content;
+      this.element.innerHTML = '111111111111';
       parentNode && parentNode.appendChild(this.element);
       this.node = this.element;
     }
@@ -53,7 +53,7 @@ export class Control {
     ) {
       this.element = document.createElement(tagName);
       this.element.className = className;
-      this.element.innerHTML = content;
+      this.element.innerHTML = '333333333333';
       parentNode && parentNode.appendChild(this.element);
       this.node = this.element;
     }
