@@ -1,14 +1,23 @@
 import '../css/main.css';
 import '../scss/main.scss';
 import '../index.html';
+
 import { RegisterWindow } from './register-window';
+import { routerMain } from './router/router';
 
 'use strict()';
 
-const innerWrapper = document.getElementById('inner-app');
-if (!innerWrapper) throw Error ('No app found!!!');
-const registerWindowHTML = new RegisterWindow(innerWrapper);
 
+// navigationTo();
+routerMain();
+// routStart();
+
+// const innerWrapper = document.getElementById('inner-app');
+// if (!innerWrapper) throw Error ('No app found!!!');
+// const registerWindowHTML = new RegisterWindow(innerWrapper);
+
+
+//!--------
 // const registerWindowHTML = new RegisterWindow(innerWrapper, 'div', 'register__window');
 // const registerWindowHTML = new RegisterWindow(innerWrapper);
 
