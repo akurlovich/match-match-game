@@ -94,7 +94,7 @@ module.exports = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: `./img/${filename('[ext]')}`
+            name: `./images/${filename('[ext]')}`
           }
         }],
       },

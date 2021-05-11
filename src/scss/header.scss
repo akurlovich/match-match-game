@@ -1,10 +1,89 @@
-.wrapper {
-  max-width: 1440px;
+.header__wrapper {
   width: 100%;
-  min-height: 1024px;
-  margin: 0 auto;
-  background-color: #ffffff;
+  height: 64px;
+  background-color: #2196F3;
+}
+
+.header__container {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo__text { 
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 19px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  &--up {
+    color: #FFFFFF;
+    
+  }
+
+  &--down {
+    background-color: #ffffff;
+    color: #2196F3;
+    
+  }
+  
+} 
+.header__nav {
+  justify-self: flex-start;
+  padding-left: 11%;
+  flex-grow: 1;
+
+  .nav__list {
+    display: flex;
+    align-items: center;
+    a {
+      color: black;
+    }
+    .list__item {
+      width: 96px;
+      height: 56px;
+      margin: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      cursor: pointer;
+      // box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px rgba(0, 0, 0, 0.14);
+      box-shadow: 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px rgba(0, 0, 0, 0.14);
+      // box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 6px 10px rgba(0, 0, 0, 0.14);
+      // box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12)
+
+    }
+    .active__page {
+      box-shadow: none;
+    }
+  }
+}
+
+.header__button {
+  width: 207px;
+  height: 36px;
+  background-color: #F2F9FE;
+  color: #2196F3;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
 }
 
