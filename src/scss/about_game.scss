@@ -88,8 +88,14 @@
   // border: 2px solid black;
   width: 100%;
   height: 240px;
+  position: relative;
   // grid-area: 4;
-  
+  .about__register-window {
+    position: absolute;
+    top: -115px;
+    left: -19px;
+    transform: scale(0.5);
+  }
 }
 
 .about__setings-btn {
