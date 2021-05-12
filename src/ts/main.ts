@@ -8,6 +8,8 @@ import { Control, Control3 } from './router/block';
 
 'use strict()';
 
+// routerMain();
+
 // testTry();
 // document.body.addEventListener('click', (event) => {
 //   console.log(event.target);
@@ -99,7 +101,7 @@ import { Control, Control3 } from './router/block';
 
 
 // navigationTo();
-routerMain();
+
 // routStart();
 
 // const innerWrapper = document.getElementById('inner-app');

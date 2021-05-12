@@ -1,0 +1,131 @@
+
+.window-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+  display: block;
+  margin-bottom: 24px;
+
+}
+
+.inner__wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 33% 20% 35%;
+  
+  // grid-template-areas: 
+  //   "1 4"
+  //   "2 5"
+  //   "3 6";
+}
+
+.about__registration {
+  background-color: #ffffff;
+  padding: 16px;
+  // border: 2px solid black;
+  width: 360px;
+  height: 230px;
+  display: flex;
+  // align-items: center;
+  // grid-area: 1;
+}
+
+.about__circle-label {
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #ffffff;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px rgba(0, 0, 0, 0.14);
+}
+
+.about__block-text {
+  max-width: 272px;
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: rgba(0, 0, 0, 0.6);
+  // display: flex;
+  // align-items: center;
+}
+
+.about__configuration {
+  background-color: #ffffff;
+  padding: 16px;
+  // border: 2px solid black;
+  width: 360px;
+  height: 132px;
+  display: flex;
+
+  // grid-area: 2;
+}
+
+.about__start-new-game {
+  background-color: #ffffff;
+  padding: 16px;
+  // border: 2px solid black;
+  width: 360px;
+  height: 240px;
+  display: flex;
+  // grid-area: 3;
+}
+
+.about__register-new {
+  // background-color: yellow;
+  // border: 2px solid black;
+  width: 100%;
+  height: 240px;
+  // grid-area: 4;
+  
+}
+
+.about__setings-btn {
+  // background-color: blue;
+  // border: 2px solid black;
+  width: 100%;
+  height: 240px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 135px;
+  // grid-area: 5;
+  .setting-btn--main {
+    background-color: #2196F3;
+    width: 116px;
+    height: 73px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 6px 10px rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+  }
+}
+
+.about__cards-field {
+  // background-color: red;
+  // border: 2px solid black;
+  width: 330px;
+  height: 100%;
+  // grid-area: 6;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-row: 1fr 1fr 1fr;
+  .about__card-front {
+    width: 100%;
+  }
+}

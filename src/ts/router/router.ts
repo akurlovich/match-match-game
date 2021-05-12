@@ -1,22 +1,6 @@
-// export const navigationTo = (url: string | null) => {
-//   // console.log(url)
-//   history.pushState(null, '', url + 'HI');
-//   router();
 
 import { Control, Control2, Control3 } from "./block";
 import { RegisterWindow } from '../register-window'
-
-// }
-
-// export const testTry = () => {
-//   let testlink = document.querySelector('#test-link');
-//   if (!testlink) throw Error ('no element');
-//   testlink.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     history.pushState(null, '', 'HI');
-//     console.log(location.pathname)
-//   })
-// }
 
 export const routerMain = () => {
   const navigationTo = (url: string | null) => {
@@ -46,22 +30,17 @@ export const routerMain = () => {
         route: routes[0],
         isMatch: true
       }
-      // console.log('match')
     }
-  
-    // console.log(potentialMatches);
-    // console.log(match);
-    // const view = new match.route.view();
 
-    // const appElement = document.getElementById('app');
-    // if (!appElement) throw Error('No app element found!!!');
-    // appElement.innerHTML = await view.getHTML();
+    //*------------------
 
     const innerWrapper = document.getElementById('inner-app');
     if (!innerWrapper) throw Error ('No app found!!!');
 
     innerWrapper.innerHTML = ""; //!----------------------------костыль-------------
     const view = await new match.route.view(innerWrapper);
+
+    //*--------------
     // const registerWindowHTML = await view();
 
     // match.route.view();
