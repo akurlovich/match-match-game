@@ -7,7 +7,24 @@ import { Control, Control2, Control3 } from "./block";
 import { RegisterWindow } from '../register-window'
 
 // }
+
+// export const testTry = () => {
+//   let testlink = document.querySelector('#test-link');
+//   if (!testlink) throw Error ('no element');
+//   testlink.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     history.pushState(null, '', 'HI');
+//     console.log(location.pathname)
+//   })
+// }
+
 export const routerMain = () => {
+  const navigationTo = (url: string | null) => {
+      // console.log(url)
+      history.pushState(null, '', url);
+      router();
+  }
+
   const router = async () => {
     const routes = [
       { path: '/', view: Control },
@@ -29,6 +46,7 @@ export const routerMain = () => {
         route: routes[0],
         isMatch: true
       }
+      // console.log('match')
     }
   
     // console.log(potentialMatches);
@@ -42,31 +60,33 @@ export const routerMain = () => {
     const innerWrapper = document.getElementById('inner-app');
     if (!innerWrapper) throw Error ('No app found!!!');
 
+    innerWrapper.innerHTML = ""; //!----------------------------костыль-------------
     const view = await new match.route.view(innerWrapper);
     // const registerWindowHTML = await view();
 
     // match.route.view();
   };
 
-  router();
+  // router();
 
 
-  window.addEventListener('popstate', router);
+  window.addEventListener('popstate', () => {
+    router();
+  });
 
-  // window.addEventListener('DOMContentLoader', () => {
-    // document.body.addEventListener('click', (event) => {
-    //   console.log((event.target as HTMLBodyElement).matches('[data-link]'))
-    //   if ((event.target as HTMLBodyElement).matches('[data-link]')) {
-    //     console.log('!!!!!!!!!!!!!')
-    //     event.preventDefault;
-    //     // if (!(event.target as HTMLBodyElement).getAttribute('href')) throw Error ('No href');
-    //     navigationTo((event.target as HTMLBodyElement).getAttribute('href'));
-    //   }
-    // })
-
-    // console.log('object');
-    // router();
-  // })
-
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (event) => {
+      // console.log((event.target as HTMLBodyElement).matches('[data-link]'))
+      if ((event.target as HTMLBodyElement).matches('[data-link]')) {
+      // if ((event.target as HTMLBodyElement).classList.contains('register_page')) {
+        // console.log('!!!!!!!!!!!!!')
+        event.preventDefault();
+        // if (!(event.target as HTMLBodyElement).getAttribute('href')) throw Error ('No href');
+        navigationTo((event.target as HTMLBodyElement).getAttribute('href'));
+      }
+      // console.log('object');
+    })
+    router();
+  })
 };
 

@@ -44,7 +44,7 @@ export class RegisterForm extends Control {
 
     this.avatarImg = new Control(this.element, 'img');
     this.formAvatar.element.appendChild(this.avatarImg.element);
-    this.avatarImg.element.setAttribute('src', '../../images/avatar.png');
+    this.avatarImg.element.setAttribute('src', '../../images/crocodile.png');
 
 
     this.inputBlocks = [
