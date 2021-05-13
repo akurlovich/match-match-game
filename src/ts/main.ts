@@ -4,15 +4,25 @@ import '../index.html';
 
 import { RegisterWindow } from './register-window';
 import { routerMain } from './router/router';
-import { Control, Control3 } from './router/block';
+// import { Control, Control3 } from './router/block';
 import { OptionSelect } from './settings_page/options';
+import { Control } from './controls';
+import { SelectBlock } from './settings_page/select_block';
+import { SelectWrapper } from './settings_page/wrapper';
 
 'use strict()';
 
 const innerWrapper: HTMLElement | null = document.querySelector('.main__container');
 if (!innerWrapper) throw Error ('No app found!!!');
 
-const FirstOption = new OptionSelect(innerWrapper, '', 'select game cards type', true, true);
+const selectedWrapper = new SelectWrapper(innerWrapper, 'div', 'settings__wrapper');
+
+// const selectedDiv = new Control(innerWrapper, 'select', 'settings__options');
+
+// const FirstOption = new OptionSelect(selectedDiv.element, '', 'select game cards type', true, true);
+// const FirstOption1 = new OptionSelect(selectedDiv.element, '4x4', '4x4', false, false);
+// const FirstOption2 = new OptionSelect(selectedDiv.element, '6x6', '6x6', false, false);
+// const FirstOption3 = new OptionSelect(selectedDiv.element, '8x8', '8x8', false, false);
 
 
 

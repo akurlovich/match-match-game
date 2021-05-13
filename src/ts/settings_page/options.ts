@@ -1,4 +1,3 @@
-// import { Control } from "../controls"
 
 export class OptionSelect {
   element: HTMLOptionElement;
