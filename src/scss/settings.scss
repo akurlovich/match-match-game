@@ -1,0 +1,27 @@
+.settings__wrapper {
+  max-width: 1000px;
+  width: 100%;
+  height: 252px;
+  padding: 32px 46px;
+  background: #FFFFFF;
+  box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.24), 0px 9px 18px rgba(0, 0, 0, 0.18);
+
+  .setting__game-type {
+    margin-bottom: 37px;
+
+  }
+  .settings__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  
+  .settings__options {
+    width: 256px;
+    height: 36px;
+    border-bottom: 1px solid #E5E5E5;
+  }
+}
