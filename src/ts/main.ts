@@ -5,8 +5,16 @@ import '../index.html';
 import { RegisterWindow } from './register-window';
 import { routerMain } from './router/router';
 import { Control, Control3 } from './router/block';
+import { OptionSelect } from './settings_page/options';
 
 'use strict()';
+
+const innerWrapper: HTMLElement | null = document.querySelector('.main__container');
+if (!innerWrapper) throw Error ('No app found!!!');
+
+const FirstOption = new OptionSelect(innerWrapper, '', 'select game cards type', true, true);
+
+
 
 // routerMain();
 
