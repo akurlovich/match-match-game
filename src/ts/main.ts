@@ -2,7 +2,7 @@ import '../css/main.css';
 import '../scss/main.scss';
 import '../index.html';
 
-import { RegisterWindow } from './register-window';
+import { RegisterWindow } from './register-window1';
 import { routerMain } from './router/router';
 // import { Control, Control3 } from './router/block';
 import { OptionSelect } from './settings_page/options';
@@ -12,10 +12,13 @@ import { SelectWrapper } from './settings_page/wrapper';
 
 'use strict()';
 
-const innerWrapper: HTMLElement | null = document.querySelector('.main__container');
-if (!innerWrapper) throw Error ('No app found!!!');
+routerMain();
 
-const selectedWrapper = new SelectWrapper(innerWrapper, 'div', 'settings__wrapper');
+// const innerWrapper: HTMLElement | null = document.querySelector('.main__container');
+// if (!innerWrapper) throw Error ('No app found!!!');
+
+// const selectedWrapper = new SelectWrapper(innerWrapper, 'div', 'settings__wrapper');
+// const selectedWrapper = new SelectWrapper(innerWrapper);
 
 // const selectedDiv = new Control(innerWrapper, 'select', 'settings__options');
 
