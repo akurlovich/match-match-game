@@ -7,7 +7,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -44,11 +44,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `./css/${filename('css')}`
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, 'app/assets')}
-    //   ]
-    // }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, 'app/assets')}
+      ]
+    }),
   ],
   devtool: isProd ? false : 'source-map',
   module: {

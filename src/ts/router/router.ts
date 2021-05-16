@@ -2,6 +2,7 @@
 import { Control } from "./block";
 import { RegisterWindow } from '../register-window1'
 import { SelectWrapper } from "../settings_page/wrapper";
+import { AboutWrapper } from "../about_page/about_wrapper";
 
 export const routerMain = () => {
   const navigationTo = (url: string | null) => {
@@ -12,7 +13,7 @@ export const routerMain = () => {
 
   const router = async () => {
     const routes = [
-      { path: '/', view: Control },
+      { path: '/', view: AboutWrapper },
       { path: '/best_score', view: RegisterWindow },
       { path: '/settings', view: SelectWrapper }
     ];

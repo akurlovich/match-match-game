@@ -1,6 +1,7 @@
 import { Control } from "./controls";
 import { FormInputBlock } from "../form_input/form-input-block";
 
+
 export class RegisterForm extends Control {
   formMain: Control;
   formInput: Control;
@@ -44,7 +45,7 @@ export class RegisterForm extends Control {
 
     this.avatarImg = new Control(this.element, 'img');
     this.formAvatar.element.appendChild(this.avatarImg.element);
-    this.avatarImg.element.setAttribute('src', '../../images/crocodile.png');
+    this.avatarImg.element.setAttribute('src', './assets/avatar.png');
 
 
     this.inputBlocks = [
