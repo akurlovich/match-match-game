@@ -13,6 +13,7 @@ export class AboutWrapper extends Control {
 
   h3Element = new Control(this.element, 'h3', 'window-title', 'How to play?');
   aboutContainer = new AboutContainer(this.element);
+  
 
 
 }

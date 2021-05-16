@@ -9,10 +9,18 @@ import { OptionSelect } from './settings_page/options';
 import { Control } from './controls';
 import { SelectBlock } from './settings_page/select_block';
 import { SelectWrapper } from './settings_page/wrapper';
+import { ModalRegisterWrapper } from './modal_window_registration/modal_wrapper_reg';
 
 'use strict()';
 
-routerMain();
+// routerMain();
+
+//!-модалка с регистрацией--
+
+const innerWrapper = document.getElementById('main__container');
+if (!innerWrapper) throw Error ('No app found!!!');
+const modalRegWin = new ModalRegisterWrapper(innerWrapper);
+
 
 // const innerWrapper: HTMLElement | null = document.querySelector('.main__container');
 // if (!innerWrapper) throw Error ('No app found!!!');
