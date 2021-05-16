@@ -17,9 +17,9 @@ import { ModalRegisterWrapper } from './modal_window_registration/modal_wrapper_
 
 //!-модалка с регистрацией--
 
-const innerWrapper = document.getElementById('main__container');
-if (!innerWrapper) throw Error ('No app found!!!');
-const modalRegWin = new ModalRegisterWrapper(innerWrapper);
+// const innerWrapper = document.getElementById('main__container');
+// if (!innerWrapper) throw Error ('No app found!!!');
+// const modalRegWin = new ModalRegisterWrapper(innerWrapper);
 
 
 // const innerWrapper: HTMLElement | null = document.querySelector('.main__container');

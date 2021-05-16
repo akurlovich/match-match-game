@@ -2,6 +2,7 @@ import { Control } from "../controls";
 import { RegisterWindow } from "../registration_form/register-window";
 
 export class ModalRegisterWrapper extends Control {
+  modalReg: RegisterWindow;
   constructor(
     parentNode: HTMLElement,
     tagName = "",
@@ -9,8 +10,9 @@ export class ModalRegisterWrapper extends Control {
     ) {
     super(parentNode);
     this.element.className = 'modal-register-wrapper';
+    
+    this.modalReg = new RegisterWindow(this.element);
   }
   // modalContainer = new Control(this.element, 'div', 'modal-container');
-  modalReg = new RegisterWindow(this.element);
 
 }
