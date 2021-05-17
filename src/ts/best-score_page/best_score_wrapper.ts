@@ -18,7 +18,7 @@ export class BestScoreWrapper extends Control {
 
     this.bestScoreBlock = new BestScoreBlocks(this.element, 'div', 'best-score__block');
     this.element.appendChild(this.bestScoreBlock.element);
-    console.log(this.bestScoreBlock.element);
+    // console.log(this.bestScoreBlock.element);
 
   }
 }

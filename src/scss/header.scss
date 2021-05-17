@@ -73,6 +73,11 @@
 }
 
 .header__button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
   width: 207px;
   height: 36px;
   background-color: #F2F9FE;

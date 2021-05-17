@@ -20,7 +20,7 @@ export class BestScoreBlocks extends Control {
         <div class="score-block__text">Score:</div>
         <div class="score-block__score">456</div>
       </div>
-      `
+      `;
 
   }
 //-------about__registration------
