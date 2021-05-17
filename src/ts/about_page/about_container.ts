@@ -62,6 +62,10 @@ export class AboutContainer extends Control {
     (this.aboutBlockSettingBtnMainImg.element as HTMLImageElement).src = './assets/settings.svg';
     this.aboutBlockSettingBtnMainText = new Control(this.aboutBlockSettingBtnMain.element, 'p', '', 'Game Settings');
 
+    this.aboutBlockSettingBtn.element.onclick = () => {
+      return location.href = './settings';
+    }
+
   //----------about__start-new-game-------------
     this.aboutBlockStartNewGame = new Control(this.element, 'div', 'about__start-new-game');
     this.aboutStartNewGameCircle = new Control(this.aboutBlockStartNewGame.element, 'div', 'about__circle-label');
