@@ -18,7 +18,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 24px 0;
+  margin-top: 24px;
+  border-bottom: 1px solid rgba(33, 33, 33, 0.08);
 }
 .best-score__name-block {
   display: flex;

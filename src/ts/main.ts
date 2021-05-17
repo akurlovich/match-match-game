@@ -10,10 +10,16 @@ import { Control } from './controls';
 import { SelectBlock } from './settings_page/select_block';
 import { SelectWrapper } from './settings_page/wrapper';
 import { ModalRegisterWrapper } from './modal_window_registration/modal_wrapper_reg';
+import { BestScoreWrapper } from './best-score_page/best_score_wrapper';
 
 'use strict()';
 
 // routerMain();
+
+//!---best score---
+const innerWrapper = document.getElementById('main__container');
+if (!innerWrapper) throw Error ('No app found!!!');
+const modalRegWin = new BestScoreWrapper(innerWrapper);
 
 //!-модалка с регистрацией--
 
