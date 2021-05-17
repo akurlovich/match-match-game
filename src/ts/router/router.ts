@@ -1,8 +1,10 @@
 
 import { Control } from "./block";
 import { RegisterWindow } from '../register-window1'
-import { SelectWrapper } from "../settings_page/wrapper";
 import { AboutWrapper } from "../about_page/about_wrapper";
+import { AboutPage } from "../about_page/about_page";
+import { BestScorePage } from "../best-score_page/best-score_page";
+import { SettingsPage } from "../settings_page/settings_page";
 
 export const routerMain = () => {
   const navigationTo = (url: string | null) => {
@@ -13,9 +15,9 @@ export const routerMain = () => {
 
   const router = async () => {
     const routes = [
-      { path: '/', view: AboutWrapper },
-      { path: '/best_score', view: RegisterWindow },
-      { path: '/settings', view: SelectWrapper }
+      { path: '/', view: AboutPage },
+      { path: '/best_score', view: BestScorePage },
+      { path: '/settings', view: SettingsPage }
     ];
   
     const potentialMatches = routes.map(route => {
@@ -36,11 +38,12 @@ export const routerMain = () => {
 
     //*------------------
 
-    const innerWrapper = document.getElementById('main__container');
-    if (!innerWrapper) throw Error ('No app found!!!');
+    // const innerWrapper = document.getElementById('main__container');
+    // if (!innerWrapper) throw Error ('No app found!!!');
 
-    innerWrapper.innerHTML = ""; //!----------------------------костыль-------------
-    const view = await new match.route.view(innerWrapper);
+    document.body.innerHTML = ""; //!----------------------------костыль-------------
+    
+    const view = await new match.route.view(document.body);
 
     //*--------------
     // const registerWindowHTML = await view();

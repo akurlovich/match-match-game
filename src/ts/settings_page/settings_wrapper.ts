@@ -4,7 +4,7 @@ import { SelectBlock } from "./select_block";
 //!--подключаем в main.js----
 // const selectedWrapper = new SelectWrapper(innerWrapper, 'div', 'settings__wrapper');
 
-export class SelectWrapper extends Control{
+export class SettingsWrapper extends Control {
   constructor(
     parentNode: HTMLElement,
     tagName = "div",

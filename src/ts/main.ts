@@ -8,19 +8,24 @@ import { routerMain } from './router/router';
 import { OptionSelect } from './settings_page/options';
 import { Control } from './controls';
 import { SelectBlock } from './settings_page/select_block';
-import { SelectWrapper } from './settings_page/wrapper';
 import { ModalRegisterWrapper } from './modal_window_registration/modal_wrapper_reg';
 import { BestScoreWrapper } from './best-score_page/best_score_wrapper';
 import { HeaderWrapper } from './header/header_wrapper';
+import { AboutPage } from './about_page/about_page';
+import { BestScorePage } from './best-score_page/best-score_page';
+import { SettingsPage } from './settings_page/settings_page';
 
 'use strict()';
 
-// routerMain();
+routerMain();
 
 //!---best score---
-const innerWrapper = document.getElementById('wrapper');
-if (!innerWrapper) throw Error ('No app found!!!');
-const modalRegWin = new HeaderWrapper(innerWrapper);
+// const innerWrapper = document.getElementById('wrapper');
+// if (!innerWrapper) throw Error ('No app found!!!');
+
+// const aboutpage = new AboutPage(document.body);
+// const bestscorepage = new BestScorePage(document.body);
+// const setblock = new SettingsPage(document.body)
 
 //!-модалка с регистрацией--
 
