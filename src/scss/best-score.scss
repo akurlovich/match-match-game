@@ -3,5 +3,65 @@
   height: 802px;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
+  padding: 48px 112px 48px 56px;
+
+}
+.best-score__title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  color: #333333;
+}
+.best-score__block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0;
+}
+.best-score__name-block {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+  
+}
+.name-block__avatar {
+  width: 40px;
+  height: 40px;
+}
+.name-block__text {
+
+}
+.name-block__names {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.1px;
+  color: #333333;
+}
+
+.best-score__score-block {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+.score-block__score {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #2196F3;
+}
+
+.score-block__text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
 
 }
