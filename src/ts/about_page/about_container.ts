@@ -54,9 +54,9 @@ export class AboutContainer extends Control {
     this.aboutBlockRegisterNewImg.element.onclick = () => {
       // this.aboutBlockRegisterNewImg.dispatch();
       const regWin = new ModalRegisterWrapper(document.body);
-      regWin.addListener(() => console.log('listener1'));
+      
       document.body.appendChild(regWin.element);
-      regWin.showNewReg = () => console.log('hi from regwin');
+      
     }
 
   //--------about__configuration-----

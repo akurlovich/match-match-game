@@ -12,4 +12,7 @@ export class HeaderRegBtn extends Control {
     this.element.textContent = 'register new player';
 
   }
+  setContent(string: string) {
+    this.element.textContent = string;
+  }
 }
