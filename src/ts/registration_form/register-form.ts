@@ -1,5 +1,6 @@
 import { Control } from "./controls";
 import { FormInputBlock } from "../form_input/form-input-block";
+import { BtnCansel } from "./btns";
 
 
 export class RegisterForm extends Control {
@@ -36,11 +37,12 @@ export class RegisterForm extends Control {
     this.formBtnAdd.element.textContent = 'add user';
 
 //!-------------------------------
-    this.formBtnCansel = new Control(this.element, 'button', 'forms__btns-cansel');
+    this.formBtnCansel = new BtnCansel(this.element, 'button', 'forms__btns-cansel');
     this.formBtns.element.appendChild(this.formBtnCansel.element);
     this.formBtnCansel.element.textContent = 'cansel';
 
     this.formBtnCansel.element.onclick = () => {
+      this.formBtnCansel.dispatch();
       this.onCanselBtnClick();
       console.log('from btn');
       //!--работает

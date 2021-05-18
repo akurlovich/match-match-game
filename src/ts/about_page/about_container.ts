@@ -9,7 +9,7 @@ export class AboutContainer extends Control {
   aboutRegistrationCircleNum: Control;
   aboutRegistrationBlockText: Control;
   aboutBlockRegisterNew: Control;
-  aboutBlockRegisterNewImg: HTMLImageElement;
+  aboutBlockRegisterNewImg: Control;
 
   aboutBlockConfiguration: Control;
   aboutConfigurationCircle: Control;
@@ -44,14 +44,17 @@ export class AboutContainer extends Control {
 
   //-------about__register-new-----
     this.aboutBlockRegisterNew = new Control(this.element, 'div', 'about__register-new');
-    // this.aboutBlockRegisterNewImg = new Control(this.aboutBlockRegisterNew.element, 'img', 'registr-img');
-    // (this.aboutBlockRegisterNewImg.element as HTMLImageElement).type = '../images/reg-img.svg'
-    this.aboutBlockRegisterNewImg = new Image();
-    this.aboutBlockRegisterNewImg.className = 'registr-img';
-    this.aboutBlockRegisterNewImg.src = './assets/reg-img.svg';
-    this.aboutBlockRegisterNew.element.appendChild(this.aboutBlockRegisterNewImg);
-    this.aboutBlockRegisterNewImg.onclick = () => {
+    this.aboutBlockRegisterNewImg = new Control(this.aboutBlockRegisterNew.element, 'img', 'registr-img');
+    (this.aboutBlockRegisterNewImg.element as HTMLImageElement).src = './assets/reg-img.svg'
+    // this.aboutBlockRegisterNewImg = new Image();
+    // this.aboutBlockRegisterNewImg.className = 'registr-img';
+    // this.aboutBlockRegisterNewImg.src = './assets/reg-img.svg';
+    this.aboutBlockRegisterNew.element.appendChild(this.aboutBlockRegisterNewImg.element);
+    this.aboutBlockRegisterNewImg.addListener(() => console.log('listener1'));
+    this.aboutBlockRegisterNewImg.element.onclick = () => {
+      // this.aboutBlockRegisterNewImg.dispatch();
       const regWin = new ModalRegisterWrapper(document.body);
+      regWin.addListener(() => console.log('listener1'));
       document.body.appendChild(regWin.element);
       regWin.showNewReg = () => console.log('hi from regwin');
     }

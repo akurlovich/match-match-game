@@ -1,4 +1,6 @@
-export class Control {
+import { Observer } from "../observer";
+
+export class Control extends Observer{
   element: HTMLElement;
   node: HTMLElement;
   constructor(
@@ -7,6 +9,7 @@ export class Control {
     className = "",
     content = ""
   ) {
+    super();
     this.element = document.createElement(tagName);
     this.element.className = className;
     this.element.innerHTML = content;
