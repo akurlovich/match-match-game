@@ -4,6 +4,9 @@ import { RegisterForm } from "./register-form";
 export class RegisterWindow extends Control {
   h3element: Control;
   regForm: RegisterForm;
+
+  // regform2: () => void = () => this.regForm.onCanselBtnClick();
+
   constructor(
     parentNode: HTMLElement,
     tagName = "div",
@@ -18,6 +21,10 @@ export class RegisterWindow extends Control {
 
     this.regForm = new RegisterForm(this.element);
     this.element.appendChild(this.regForm.element);
+  }
+  
+  showRegWin() {
+    this.regForm.onCanselBtnClick = () => {console.log('from RW')};
   }
 
   // showParent() {

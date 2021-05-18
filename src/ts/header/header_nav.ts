@@ -19,13 +19,13 @@ export class HeaderNavigation extends Control {
     this.navUl = new Control(this.element, 'ul', 'nav__list');
     this.element.appendChild(this.navUl.element);
 //!--links----
-    this.navLinkAbout = new HeaderLinks(this.element, 'a', './images/about.svg', 'About Game', '/');
+    this.navLinkAbout = new HeaderLinks(this.element, 'a', './assets/about.svg', 'About Game', '/');
     this.navUl.element.appendChild(this.navLinkAbout.element);
 
-    this.navLinkScore = new HeaderLinks(this.element, 'a', './images/score.svg', 'Best Score', '/best_score');
+    this.navLinkScore = new HeaderLinks(this.element, 'a', './assets/score.svg', 'Best Score', '/best_score');
     this.navUl.element.appendChild(this.navLinkScore.element);
 
-    this.navLinkSettings = new HeaderLinks(this.element, 'a', './images/settings.svg', 'Game Settings', '/settings');
+    this.navLinkSettings = new HeaderLinks(this.element, 'a', './assets/settings.svg', 'Game Settings', '/settings');
     this.navUl.element.appendChild(this.navLinkSettings.element);
 
 

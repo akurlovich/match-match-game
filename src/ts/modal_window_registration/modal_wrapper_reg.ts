@@ -3,6 +3,8 @@ import { RegisterWindow } from "../registration_form/register-window";
 
 export class ModalRegisterWrapper extends Control {
   modalReg: RegisterWindow;
+  // regform3: () => void = () => this.modalReg.regform2();
+
   constructor(
     parentNode: HTMLElement,
     tagName = "",
@@ -14,5 +16,11 @@ export class ModalRegisterWrapper extends Control {
     this.modalReg = new RegisterWindow(this.element);
   }
   // modalContainer = new Control(this.element, 'div', 'modal-container');
+  // hide() {
+  //   this.element.style.display = 'none';
+  // }
+  showNewReg() {
+    this.modalReg.showRegWin = () => {console.log('from MRW')};
+  }
 
 }

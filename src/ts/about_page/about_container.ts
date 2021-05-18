@@ -1,4 +1,6 @@
 import { Control } from "../controls";
+import { ModalRegisterWrapper } from "../modal_window_registration/modal_wrapper_reg";
+import { RegisterWindow } from "../registration_form/register-window";
 import { AboutBlocks } from "./about_blocks";
 
 export class AboutContainer extends Control {
@@ -48,6 +50,11 @@ export class AboutContainer extends Control {
     this.aboutBlockRegisterNewImg.className = 'registr-img';
     this.aboutBlockRegisterNewImg.src = './assets/reg-img.svg';
     this.aboutBlockRegisterNew.element.appendChild(this.aboutBlockRegisterNewImg);
+    this.aboutBlockRegisterNewImg.onclick = () => {
+      const regWin = new ModalRegisterWrapper(document.body);
+      document.body.appendChild(regWin.element);
+      regWin.showNewReg = () => console.log('hi from regwin');
+    }
 
   //--------about__configuration-----
     this.aboutBlockConfiguration = new Control(this.element, 'div', 'about__configuration');

@@ -12,6 +12,8 @@ export class RegisterForm extends Control {
   formBtnCansel: Control;
   inputBlocks: FormInputBlock[];
 
+  onCanselBtnClick: () => void = () => {};
+
   constructor(
     parentNode: HTMLElement,
     tagName = "div",
@@ -33,9 +35,24 @@ export class RegisterForm extends Control {
     // (this.formBtnAdd.element as HTMLInputElement).value = 'add user';
     this.formBtnAdd.element.textContent = 'add user';
 
+//!-------------------------------
     this.formBtnCansel = new Control(this.element, 'button', 'forms__btns-cansel');
     this.formBtns.element.appendChild(this.formBtnCansel.element);
     this.formBtnCansel.element.textContent = 'cansel';
+
+    this.formBtnCansel.element.onclick = () => {
+      this.onCanselBtnClick();
+      console.log('from btn');
+      //!--работает
+      // const parEl = this.element.parentElement;
+      // if (!parEl) throw new Error('no');
+      // const parEl2 = parEl.parentElement;
+      // if (!parEl2) throw new Error('no two')
+      // parEl2.style.display = 'none';
+    }
+
+
+
 
     this.formInput = new Control(this.element, 'div', 'form__input');
     this.formMain.element.appendChild(this.formInput.element);
