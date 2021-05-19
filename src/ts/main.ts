@@ -19,9 +19,9 @@ import { GamePage } from './game_page/game_page';
 
 'use strict()';
 
-new GamePage(document.body);
+// new GamePage(document.body);
 
-// routerMain();
+routerMain();
 
 //!---best score---
 // const innerWrapper = document.getElementById('wrapper');
