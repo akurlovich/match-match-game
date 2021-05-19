@@ -48,11 +48,14 @@ export class HeaderWrapper extends Control {
       // this.btnReg.dispatch();
       // console.log('11111')
       const regWin = new ModalRegisterWrapper(document.body);
+      regWin.registrationForm.onCanselBtnClick = () => {
+        alert('wrong input!')
+      };
       // this.btnReg.setContent('staart');
       // this.btnReg.addListener(() => {
       //   console.log('hi2')
       // })
-      regWin.showWin();
+      // regWin.showWin();
       // console.log(this.listeners)
     };
   }

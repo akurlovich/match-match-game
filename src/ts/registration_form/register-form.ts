@@ -43,15 +43,15 @@ export class RegisterForm extends Control {
 
     this.formBtnCansel.element.onclick = () => {
       // this.formBtnCansel.dispatch();
-      // this.onCanselBtnClick();
+      this.onCanselBtnClick();
       // console.log('from btn');
       // console.log(this.listeners)
       //!--работает
-      const parEl = this.element.parentElement;
-      if (!parEl) throw new Error('no');
-      const parEl2 = parEl.parentElement;
-      if (!parEl2) throw new Error('no two')
-      parEl2.style.display = 'none';
+      // const parEl = this.element.parentElement;
+      // if (!parEl) throw new Error('no');
+      // const parEl2 = parEl.parentElement;
+      // if (!parEl2) throw new Error('no two')
+      // parEl2.style.display = 'none';
     }
 
 

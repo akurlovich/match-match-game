@@ -1,6 +1,6 @@
 import { Control } from "../controls";
 import { ModalRegisterWrapper } from "../modal_window_registration/modal_wrapper_reg";
-import { RegisterWindow } from "../registration_form/register-window";
+import { RegisterWindow } from "../registration_form/___register-window";
 import { AboutBlocks } from "./about_blocks";
 
 export class AboutContainer extends Control {

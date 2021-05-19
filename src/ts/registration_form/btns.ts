@@ -10,12 +10,12 @@ export class BtnCansel extends Control {
     super(parentNode, tagName = "button", className = "forms__btns-cansel", content = "cansel");
     // this.dispatch();
     // this.addListener(() => {console.log('listener1')});
-    this.element.onclick = () => {
-      this.addListener(() => {
-        console.log('hi')
-      })
-      console.log(this.listeners)
-      // this.dispatch();
-    }
+    // this.element.onclick = () => {
+    //   this.addListener(() => {
+    //     console.log('hi')
+    //   })
+    //   console.log(this.listeners)
+    //   this.dispatch();
+    // }
   }
 }
