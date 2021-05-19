@@ -16,12 +16,16 @@ import { BestScorePage } from './best-score_page/best-score_page';
 import { SettingsPage } from './settings_page/settings_page';
 import { App } from './game_page/app';
 import { GamePage } from './game_page/game_page';
+import { TimerComponent } from './timer/timer_templare';
 
 'use strict()';
 
 // new GamePage(document.body);
 
 routerMain();
+
+// const timer = new TimerComponent();
+// console.log(timer.display)
 
 //!---best score---
 // const innerWrapper = document.getElementById('wrapper');

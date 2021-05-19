@@ -21,10 +21,13 @@ export class RegisterWindow extends Control {
 
     this.regForm = new RegisterForm(this.element);
     this.element.appendChild(this.regForm.element);
+
+    
   }
   
   showRegWin() {
-    this.regForm.onCanselBtnClick = () => {console.log('from RW')};
+    // this.regForm.onCanselBtnClick = () => {console.log('from RW')};
+  
   }
 
   // showParent() {

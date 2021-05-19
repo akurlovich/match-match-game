@@ -15,11 +15,16 @@ export class ModalRegisterWrapper extends Control {
     
     this.modalReg = new RegisterWindow(this.element);
     // this.modalReg.addListener(() => console.log('listener1'));
+    // this.element.onclick = () => {
+    //   this.dispatch();
+    //   console.log(this.listeners)
+
+    // }
   }
-  // modalContainer = new Control(this.element, 'div', 'modal-container');
-  // hide() {
-  //   this.element.style.display = 'none';
-  // }
+  showWin() {
+    console.log('showWin');
+  }
+
   hide() {
     this.element.style.display = 'none';
   }

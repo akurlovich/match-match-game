@@ -2,7 +2,7 @@ import { Control } from "./controls";
 
 export class Observer {
   listeners: any[];
-  // callback: () => void;
+ 
   constructor() {
     this.listeners = [];
   }

@@ -46,20 +46,15 @@ export class HeaderWrapper extends Control {
     // this.btnReg.addListener(()=>{alert('hi')});
     this.btnReg.element.onclick = () => {
       // this.btnReg.dispatch();
-      console.log('11111')
+      // console.log('11111')
       const regWin = new ModalRegisterWrapper(document.body);
       this.btnReg.setContent('staart');
-      this.addListener(() => {
-        console.log('hi2')
-      })
-      console.log(this.listeners)
+      // this.btnReg.addListener(() => {
+      //   console.log('hi2')
+      // })
+      regWin.showWin();
+      // console.log(this.listeners)
     };
-
-
   }
-
-  
-  
-
 
 }
