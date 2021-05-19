@@ -9,6 +9,7 @@ export class HeaderWrapper extends Control {
   headerLogo: HeaderLogo;
   headerNav: HeaderNavigation;
   btnReg: HeaderRegBtn;
+  startBtn: HeaderRegBtn;
 
   constructor(
     parentNode: HTMLElement,
@@ -28,6 +29,11 @@ export class HeaderWrapper extends Control {
     // this.headerContainer.element.appendChild(this.headerNav.element);
 
     //!--btn---
+    this.startBtn = new HeaderRegBtn(this.headerContainer.element);
+    this.startBtn.setContent('start game');
+    this.startBtn.element.style.width = '120px';
+    this.startBtn.element.style.marginRight = '20px';
+
     this.btnReg = new HeaderRegBtn(this.headerContainer.element);
     // new HeaderRegBtn(this.headerContainer.element);
     // this.headerContainer.element.appendChild(this.btnReg.element);
@@ -37,6 +43,10 @@ export class HeaderWrapper extends Control {
       console.log('11111')
       const regWin = new ModalRegisterWrapper(document.body);
       this.btnReg.setContent('staart');
+      this.addListener(() => {
+        console.log('hi2')
+      })
+      console.log(this.listeners)
     };
 
 

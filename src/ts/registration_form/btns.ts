@@ -11,7 +11,11 @@ export class BtnCansel extends Control {
     // this.dispatch();
     // this.addListener(() => {console.log('listener1')});
     this.element.onclick = () => {
-      this.dispatch();
+      this.addListener(() => {
+        console.log('hi')
+      })
+      console.log(this.listeners)
+      // this.dispatch();
     }
   }
 }

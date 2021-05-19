@@ -14,10 +14,14 @@ import { HeaderWrapper } from './header/header_wrapper';
 import { AboutPage } from './about_page/about_page';
 import { BestScorePage } from './best-score_page/best-score_page';
 import { SettingsPage } from './settings_page/settings_page';
+import { App } from './game_page/app';
+import { GamePage } from './game_page/game_page';
 
 'use strict()';
 
-routerMain();
+new GamePage(document.body);
+
+// routerMain();
 
 //!---best score---
 // const innerWrapper = document.getElementById('wrapper');
