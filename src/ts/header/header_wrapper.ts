@@ -48,7 +48,7 @@ export class HeaderWrapper extends Control {
       // this.btnReg.dispatch();
       // console.log('11111')
       const regWin = new ModalRegisterWrapper(document.body);
-      this.btnReg.setContent('staart');
+      // this.btnReg.setContent('staart');
       // this.btnReg.addListener(() => {
       //   console.log('hi2')
       // })
@@ -56,5 +56,6 @@ export class HeaderWrapper extends Control {
       // console.log(this.listeners)
     };
   }
+  
 
 }
