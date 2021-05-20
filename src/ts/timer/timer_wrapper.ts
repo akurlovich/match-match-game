@@ -4,7 +4,9 @@ import { TimerComponent } from "./timer_templare";
 
 export class TimerWrapper extends Control {
   // timer: TimerComponent;
-  counter: number = -1;
+  // timer: TimerComponent;
+  counter!: number;
+  coutNum!: number | string;
   constructor(
     parentNode: HTMLElement,
     tagName = "div",
@@ -21,14 +23,22 @@ export class TimerWrapper extends Control {
 
   }
   // let counter: number = 0;
+  setTime(sec: number = 30) {
+    this.counter = sec;
+  }
   timer() {
-    this.counter++;
-    if (this.counter > 10) return;
+    this.counter--;
+    if (this.counter >= 10) {
+      this.coutNum = this.counter;
+    } else {
+      this.coutNum = '0' + this.counter;
+    }
     this.element.innerHTML = `
       <div class="timer__block">
-        <span>00 : ${this.counter}</span>
+      <span>00 : ${this.coutNum}</span>
       </div>
       `;
+    if (this.counter <= 0) return;
     setTimeout(() => {
       this.timer();
     }, 1000)

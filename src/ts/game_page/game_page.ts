@@ -14,6 +14,7 @@ export class GamePage extends Control {
     this.element.id = 'game_wrapper';
 
     const timer = new TimerWrapper(this.element);
+    timer.setTime(40);
     timer.timer();
     
 

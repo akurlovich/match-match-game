@@ -80,6 +80,14 @@ export class RegisterForm extends Control {
     //     console.log();
     //   })
     // })
+//!------- const regPart1 = /^(([^<>()[]\.;:\s@"]+(\.[^<>()[\]\\.;:\s@"]+))|(".+"))/;
+//!------- const regPart2 = /@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+// почта /[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm 
+//https://www.elma-bpm.ru/KB/article-6127.html
+//https://habr.com/ru/post/123845/
+//https://proglib.io/p/33-regexp/
+//http://regexpres.narod.ru/calculator.html
+//https://ru.infobyip.com/regularexpressioncalculator.php
 
     this.inputBlocks.map((elem, index) => {
       this.formInput.element.appendChild(elem.element);
