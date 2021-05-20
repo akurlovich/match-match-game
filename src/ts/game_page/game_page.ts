@@ -1,4 +1,5 @@
 import { Control } from "../controls";
+import { TimerWrapper } from "../timer/timer_wrapper";
 import { App } from "./app";
 
 export class GamePage extends Control {
@@ -11,6 +12,10 @@ export class GamePage extends Control {
     super(parentNode);
     this.element.className = 'game_wrapper';
     this.element.id = 'game_wrapper';
+
+    const timer = new TimerWrapper(this.element);
+    timer.timer();
+    
 
     new App(this.element).start();
 

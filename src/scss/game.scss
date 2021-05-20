@@ -12,13 +12,11 @@
   height: 820px;
   background-color: #8EC5FC;
   background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
-  
-
-
-
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
+  flex-direction: column;
+  padding-top: 30px;
 }
 
 .card-field {
@@ -91,6 +89,35 @@
   background-position: center;
   background-size: cover;
   transform: rotateY(180deg);
+
+}
+
+.timer__container {
+  width: 100%;
+  // height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timer__block {
+  width: 256px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.4);
+}
+.timer__minuts {
+
+}
+.timer__seconds {
 
 }
   // &__front,
