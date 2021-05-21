@@ -16,16 +16,11 @@ export class RegisterForm extends Control {
   formBtnAdd: Control;
   formBtnCansel: Control;
   inputBlocks: FormInputBlock[];
-
   user!: NewUser;
-
-  // user!: {
-  //   first: string;
-  //   second: string;
-  //   email: string;
-  // };
+  regFormValid: boolean = false;
 
   onCanselBtnClick: () => void = () => {};
+  closeRegistrationForm: () => void = () => {};
 
   constructor(
     parentNode: HTMLElement,
@@ -47,17 +42,10 @@ export class RegisterForm extends Control {
       email: ''
     };
     this.formBtnAdd.element.onclick = () => {
-      if (this.inputBlocks[0].firstNameValidate()) {
-        this.user.first = this.inputBlocks[0].getValue();
-      } else this.user.first = 'name error';
-      if (this.inputBlocks[1].lastNameValidate()) {
-        this.user.second = this.inputBlocks[1].getValue();
-      } else this.user.second = 'last error';
-      if (this.inputBlocks[2].emailValidate()) {
-        this.user.email = this.inputBlocks[2].getValue();
-      } else this.user.email = 'email error';
-      console.log(this.user);
-      
+      this.registrationFormValidation();
+      if (this.regFormValid) {
+        this.closeRegistrationForm();
+      }
     }
 
 //!----------------cansel---------------
@@ -114,5 +102,21 @@ export class RegisterForm extends Control {
         }
       })
     })
+  }
+  registrationFormValidation() {
+    if (this.inputBlocks[0].firstNameValidate()) {
+      this.user.first = this.inputBlocks[0].getValue();
+    } else this.user.first = 'name error';
+    if (this.inputBlocks[1].lastNameValidate()) {
+      this.user.second = this.inputBlocks[1].getValue();
+    } else this.user.second = 'last error';
+    if (this.inputBlocks[2].emailValidate()) {
+      this.user.email = this.inputBlocks[2].getValue();
+    } else this.user.email = 'email error';
+    console.log(this.user);
+    this.regFormValid = ((this.inputBlocks[0].firstNameValidate()) && 
+      (this.inputBlocks[1].lastNameValidate()) &&
+      (this.inputBlocks[2].emailValidate()));
+    console.log(this.regFormValid);
   }
 } 

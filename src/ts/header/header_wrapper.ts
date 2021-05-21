@@ -51,6 +51,10 @@ export class HeaderWrapper extends Control {
       regWin.registrationForm.onCanselBtnClick = () => {
         alert('wrong input!')
       };
+      regWin.registrationForm.closeRegistrationForm = () => {
+        console.log('vse polia zapolneny');
+        regWin.element.style.display = 'none';
+      }
       // this.btnReg.setContent('staart');
       // this.btnReg.addListener(() => {
       //   console.log('hi2')
