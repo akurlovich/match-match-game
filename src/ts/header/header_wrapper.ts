@@ -53,7 +53,7 @@ export class HeaderWrapper extends Control {
       };
       regWin.registrationForm.closeRegistrationForm = () => {
         console.log('vse polia zapolneny');
-        regWin.element.style.display = 'none';
+        regWin.element.remove();
       }
       // this.btnReg.setContent('staart');
       // this.btnReg.addListener(() => {
