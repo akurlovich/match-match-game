@@ -2,7 +2,11 @@ import { Control } from "./controls";
 import { FormInputBlock } from "../form_input/form-input-block";
 import { BtnCansel } from "./btns";
 
-
+interface NewUser{
+  first: string, 
+  second: string, 
+  email: string,
+};
 export class RegisterForm extends Control {
   formMain: Control;
   formInput: Control;
@@ -13,6 +17,14 @@ export class RegisterForm extends Control {
   formBtnCansel: Control;
   inputBlocks: FormInputBlock[];
 
+  user!: NewUser;
+
+  // user!: {
+  //   first: string;
+  //   second: string;
+  //   email: string;
+  // };
+
   onCanselBtnClick: () => void = () => {};
 
   constructor(
@@ -22,23 +34,34 @@ export class RegisterForm extends Control {
     content = ""
   ) {
     super(parentNode, tagName = "div", className = "", content = "");
-
     this.element.className = 'register-form';
 
     this.formMain = new Control(this.element, 'div', 'form__main');
-    this.element.appendChild(this.formMain.element);
-
     this.formBtns = new Control(this.element, 'div', 'form__btns');
-    this.element.appendChild(this.formBtns.element);
-
-    this.formBtnAdd = new Control(this.element, 'button', 'forms__btns-add');
-    this.formBtns.element.appendChild(this.formBtnAdd.element);
-    // (this.formBtnAdd.element as HTMLInputElement).value = 'add user';
+//!----------------ADD----
+    this.formBtnAdd = new Control(this.formBtns.element, 'button', 'forms__btns-add');
     this.formBtnAdd.element.textContent = 'add user';
+    this.user = {
+      first: '',
+      second: '',
+      email: ''
+    };
+    this.formBtnAdd.element.onclick = () => {
+      if (this.inputBlocks[0].firstNameValidate()) {
+        this.user.first = this.inputBlocks[0].getValue();
+      } else this.user.first = 'name error';
+      if (this.inputBlocks[1].lastNameValidate()) {
+        this.user.second = this.inputBlocks[1].getValue();
+      } else this.user.second = 'last error';
+      if (this.inputBlocks[2].emailValidate()) {
+        this.user.email = this.inputBlocks[2].getValue();
+      } else this.user.email = 'email error';
+      console.log(this.user);
+      
+    }
 
-//!-------------------------------
-    this.formBtnCansel = new BtnCansel(this.element, 'button', 'forms__btns-cansel');
-    this.formBtns.element.appendChild(this.formBtnCansel.element);
+//!----------------cansel---------------
+    this.formBtnCansel = new BtnCansel(this.formBtns.element, 'button', 'forms__btns-cansel');
     this.formBtnCansel.element.textContent = 'cansel';
 
     this.formBtnCansel.element.onclick = () => {
@@ -54,32 +77,17 @@ export class RegisterForm extends Control {
       // parEl2.style.display = 'none';
     }
 
-
-
-
-    this.formInput = new Control(this.element, 'div', 'form__input');
-    this.formMain.element.appendChild(this.formInput.element);
-
-    this.formAvatar = new Control(this.element, 'div', 'form__avatar');
-    this.formMain.element.appendChild(this.formAvatar.element);
-
-    this.avatarImg = new Control(this.element, 'img');
-    this.formAvatar.element.appendChild(this.avatarImg.element);
+    this.formInput = new Control(this.formMain.element, 'div', 'form__input');
+    this.formAvatar = new Control(this.formMain.element, 'div', 'form__avatar');
+    this.avatarImg = new Control(this.formAvatar.element, 'img');
     this.avatarImg.element.setAttribute('src', './assets/avatar.png');
 
-
     this.inputBlocks = [
-      new FormInputBlock(this.element, 'First name'), 
-      new FormInputBlock(this.element, 'Second name'),
-      new FormInputBlock(this.element, 'E-mail')
+      new FormInputBlock(this.formInput.element, 'First name'), 
+      new FormInputBlock(this.formInput.element, 'Second name'),
+      new FormInputBlock(this.formInput.element, 'E-mail')
     ];
 
-    // this.inputBlocks.forEach((elem) => {
-    //   this.formInput.element.appendChild(elem.element)
-    //   elem.element.addEventListener('input', () => {
-    //     console.log();
-    //   })
-    // })
 //!------- const regPart1 = /^(([^<>()[]\.;:\s@"]+(\.[^<>()[\]\\.;:\s@"]+))|(".+"))/;
 //!------- const regPart2 = /@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 // почта /[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm 
@@ -88,52 +96,23 @@ export class RegisterForm extends Control {
 //https://proglib.io/p/33-regexp/
 //http://regexpres.narod.ru/calculator.html
 //https://ru.infobyip.com/regularexpressioncalculator.php
+//https://emailregex.com/
 
     this.inputBlocks.map((elem, index) => {
-      this.formInput.element.appendChild(elem.element);
       elem.setSvgColor('red');
       elem.element.addEventListener('input', () => {
         switch (index) {
           case 0: 
-            // console.log('one');
             elem.firstNameValidate();
             break;
           case 1:
             elem.lastNameValidate();
-            // console.log('two')
-            // if ((elem.element.firstChild as HTMLInputElement).value.length > 5) {
-            //   elem.setSvgColor('#018786')
-            // } else {
-            //     elem.setSvgColor('red');
-            // }
             break;
           case 2:
             elem.emailValidate();
-            // console.log('tree')
             break;
         }
-        // console.log(index);
       })
     })
-
-    // this.inputBlocks[0].setSvgColor('red');
-    // this.inputBlocks[0].element.addEventListener('input', () => {
-      // console.log('input');
-      // console.log((this.inputBlocks[0].element.firstChild as HTMLInputElement).value);
-
-      // console.log((this.inputBlocks[0].element as HTMLInputElement).value);
-    //   console.log((this.inputBlocks[0].element.firstChild as HTMLInputElement).value.length > 5);
-    //   if ((this.inputBlocks[0].element.firstChild as HTMLInputElement).value.length > 5) {
-    //     this.inputBlocks[0].setSvgColor('#018786');
-    //   } 
-    //   else {
-    //     this.inputBlocks[0].setSvgColor('red');
-    //   }
-    // })
-
   }
-
-  // showParent() {
-  //   console.log(this.element.parentElement);
-  // }
 } 

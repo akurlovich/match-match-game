@@ -18,46 +18,36 @@ export class FormInputBlock extends Control {
     this.element.className = 'form__input-block';
 
     this.inputItem = new Control(this.element, 'input', 'input-items');
-    this.element.appendChild(this.inputItem.element);
-    // this.inputItem.element.addEventListener('input', () => {
-    //   if ((this.inputItem.element as HTMLInputElement).value.length > 5) {
-    //     this.setSvgColor('#018786');
-    //   }
-    // })
 
     this.inputLabel = new Control(this.element, 'label', 'form__input-label', labelText);
-    this.element.appendChild(this.inputLabel.element);
 
     this.inputChecked = new Control(this.element, 'div', 'form__input-checked');
-    this.element.appendChild(this.inputChecked.element);
     
   }
 
+  getValue() {
+    return (this.inputItem.element as HTMLInputElement).value;
+  }
+
   firstNameValidate() {
-    // if ((this.inputItem.element as HTMLInputElement).value.length > 3) {
-    //   this.setSvgColor('green')
-    // } else {
-    //   this.setSvgColor('black');
-    // };
     const regExp = /^[a-zA-Zа-яА-Я][a-zA-Z0-9\s]{1,30}$/;
     if (regExp.test((this.inputItem.element as HTMLInputElement).value)) {
       this.setSvgColor('green')
+      return true;
       } else {
         this.setSvgColor('black');
+        return false;
       };
   };
 
   lastNameValidate() {
-    // if ((this.inputItem.element as HTMLInputElement).value.length > 6) {
-    //   this.setSvgColor('green')
-    // } else {
-    //   this.setSvgColor('black');
-    // };
     const regExp = /^[a-zA-Zа-яА-Я][a-zA-Z0-9\s]{1,30}$/;
     if (regExp.test((this.inputItem.element as HTMLInputElement).value)) {
       this.setSvgColor('green')
+      return true;
       } else {
         this.setSvgColor('black');
+        return false;
       };
   };
 
@@ -65,8 +55,10 @@ export class FormInputBlock extends Control {
     const regExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (regExp.test((this.inputItem.element as HTMLInputElement).value)) {
       this.setSvgColor('green')
+      return true;
       } else {
         this.setSvgColor('black');
+        return false;
       };
   }
 
