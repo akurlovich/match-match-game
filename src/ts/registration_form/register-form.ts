@@ -17,7 +17,7 @@ export class RegisterForm extends Control {
   dataBase: DataBaseIDX;
   inputFile: InputFileFeild;
   labelInputFile: LabelFileFeild;
-  urlImage: string | unknown = 'src_image';
+  urlImage: string | unknown;
 
   onCanselBtnClick: () => void = () => {};
   closeRegistrationForm: () => void = () => {};
@@ -52,26 +52,20 @@ export class RegisterForm extends Control {
       let numHash = (new Date).getTime();
       this.registrationFormValidation();
       if (this.regFormValid) {
-        console.log('from onclick 1')
         this.closeRegistrationForm();
-        console.log('from onclick 2')
-        let resreg = await this.dataBase.addItem<MyRecords>('match_game', {score: scoreNum, name: this.user.name, second: this.user.second, email: this.user.email, image: this.user.image, hash: numHash});
-        console.log('to add :', resreg);
+        let resreg = await this.dataBase.addItem<MyRecords>('match_game', {
+          score: scoreNum, 
+          name: this.user.name, 
+          second: this.user.second, 
+          email: this.user.email, 
+          image: this.user.image, 
+          hash: numHash
+        });
       };
-      console.log('from onclick 3')
     };
 
-//!----------------cansel---------------
     this.formBtnCansel = new BtnCansel(this.formBtns.element, 'button', 'forms__btns-cansel', 'cansel');
-    this.formBtnCansel.element.onclick = () => {
-      this.onCanselBtnClick();
-      //!--работает
-      // const parEl = this.element.parentElement;
-      // if (!parEl) throw new Error('no');
-      // const parEl2 = parEl.parentElement;
-      // if (!parEl2) throw new Error('no two')
-      // parEl2.style.display = 'none';
-    }
+    this.formBtnCansel.element.onclick = () => this.onCanselBtnClick();
 
     this.formInput = new Control(this.formMain.element, 'div', 'form__input');
     this.formAvatar = new Control(this.formMain.element, 'div', 'form__avatar');
@@ -103,13 +97,6 @@ export class RegisterForm extends Control {
 
 //!------- const regPart1 = /^(([^<>()[]\.;:\s@"]+(\.[^<>()[\]\\.;:\s@"]+))|(".+"))/;
 //!------- const regPart2 = /@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-// почта /[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm 
-//https://www.elma-bpm.ru/KB/article-6127.html
-//https://habr.com/ru/post/123845/
-//https://proglib.io/p/33-regexp/
-//http://regexpres.narod.ru/calculator.html
-//https://ru.infobyip.com/regularexpressioncalculator.php
-//https://emailregex.com/
 
     this.inputBlocks.map((elem, index) => {
       elem.setSvgColor('red');
