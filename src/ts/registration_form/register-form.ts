@@ -1,11 +1,14 @@
 import { Control } from "./controls";
 import { FormInputBlock } from "../form_input/form-input-block";
 import { BtnCansel } from "./btns";
+import { DataBaseIDX } from "../DB/DataBaseIDX";
+import { MyRecords } from "../DB/iMyRecords";
 
 interface NewUser{
   first: string, 
   second: string, 
   email: string,
+  imageSrc: string
 };
 export class RegisterForm extends Control {
   formMain: Control;
@@ -18,6 +21,7 @@ export class RegisterForm extends Control {
   inputBlocks: FormInputBlock[];
   user!: NewUser;
   regFormValid: boolean = false;
+  dataBase: DataBaseIDX;
 
   onCanselBtnClick: () => void = () => {};
   closeRegistrationForm: () => void = () => {};
@@ -39,14 +43,32 @@ export class RegisterForm extends Control {
     this.user = {
       first: '',
       second: '',
-      email: ''
+      email: '',
+      imageSrc: ''
     };
-    this.formBtnAdd.element.onclick = () => {
+    //!--data base---
+    this.dataBase = new DataBaseIDX();
+    this.dataBase.init('akurlovich', 'match_game');
+
+    // this.formBtnAdd.element.onclick = () => {
+    //   this.registrationFormValidation();
+    //   // if (this.regFormValid) {
+    //   //   this.closeRegistrationForm();
+    //   // }
+    // }
+    this.formBtnAdd.onClick = async () => {
+      let scoreNum = Math.floor(Math.random() * 1000);
+      let numHash = (new Date).getTime();
       this.registrationFormValidation();
       if (this.regFormValid) {
+        console.log('from onclick 1')
         this.closeRegistrationForm();
-      }
-    }
+        console.log('from onclick 2')
+        let resreg = await this.dataBase.addItem<MyRecords>('match_game', {score: scoreNum, name: this.user.first, second: this.user.second, email: this.user.email, image: 'this_url', hash: numHash});
+        console.log('to add :', resreg);
+      };
+      console.log('from onclick 3')
+    };
 
 //!----------------cansel---------------
     this.formBtnCansel = new BtnCansel(this.formBtns.element, 'button', 'forms__btns-cansel');
@@ -113,10 +135,10 @@ export class RegisterForm extends Control {
     if (this.inputBlocks[2].emailValidate()) {
       this.user.email = this.inputBlocks[2].getValue();
     } else this.user.email = 'email error';
-    console.log(this.user);
+    // console.log(this.user);
     this.regFormValid = ((this.inputBlocks[0].firstNameValidate()) && 
       (this.inputBlocks[1].lastNameValidate()) &&
       (this.inputBlocks[2].emailValidate()));
-    console.log(this.regFormValid);
+    console.log('from registratoin form valitation', this.regFormValid);
   }
 } 
