@@ -1,27 +1,23 @@
-import { Control } from "./controls";
-import { FormInputBlock } from "../form_input/form-input-block";
+import { AvatarImage, Control, InputFileFeild, LabelFileFeild } from "./controls";
+import { FormInputBlock } from "../registration_form/form-input-block";
 import { BtnCansel } from "./btns";
 import { DataBaseIDX } from "../DB/DataBaseIDX";
 import { MyRecords } from "../DB/iMyRecords";
-
-interface NewUser{
-  first: string, 
-  second: string, 
-  email: string,
-  imageSrc: string
-};
 export class RegisterForm extends Control {
   formMain: Control;
   formInput: Control;
   formAvatar: Control;
-  avatarImg: Control | HTMLImageElement;
+  avatarImg: AvatarImage;
   formBtns: Control;
   formBtnAdd: Control;
   formBtnCansel: Control;
   inputBlocks: FormInputBlock[];
-  user!: NewUser;
+  user!: MyRecords;
   regFormValid: boolean = false;
   dataBase: DataBaseIDX;
+  inputFile: InputFileFeild;
+  labelInputFile: LabelFileFeild;
+  urlImage: string | unknown = 'src_image';
 
   onCanselBtnClick: () => void = () => {};
   closeRegistrationForm: () => void = () => {};
@@ -35,27 +31,22 @@ export class RegisterForm extends Control {
     super(parentNode, tagName = "div", className = "", content = "");
     this.element.className = 'register-form';
 
+    this.user = {
+      score: 0,
+      name: '', 
+      second: '', 
+      email: '',
+      image: '',
+      hash: 0,
+    }
+
     this.formMain = new Control(this.element, 'div', 'form__main');
     this.formBtns = new Control(this.element, 'div', 'form__btns');
-//!----------------ADD----
-    this.formBtnAdd = new Control(this.formBtns.element, 'button', 'forms__btns-add');
-    this.formBtnAdd.element.textContent = 'add user';
-    this.user = {
-      first: '',
-      second: '',
-      email: '',
-      imageSrc: ''
-    };
-    //!--data base---
+//!--data base---
     this.dataBase = new DataBaseIDX();
     this.dataBase.init('akurlovich', 'match_game');
-
-    // this.formBtnAdd.element.onclick = () => {
-    //   this.registrationFormValidation();
-    //   // if (this.regFormValid) {
-    //   //   this.closeRegistrationForm();
-    //   // }
-    // }
+//!----------------ADD----
+    this.formBtnAdd = new Control(this.formBtns.element, 'button', 'forms__btns-add', 'add user');
     this.formBtnAdd.onClick = async () => {
       let scoreNum = Math.floor(Math.random() * 1000);
       let numHash = (new Date).getTime();
@@ -64,21 +55,16 @@ export class RegisterForm extends Control {
         console.log('from onclick 1')
         this.closeRegistrationForm();
         console.log('from onclick 2')
-        let resreg = await this.dataBase.addItem<MyRecords>('match_game', {score: scoreNum, name: this.user.first, second: this.user.second, email: this.user.email, image: 'this_url', hash: numHash});
+        let resreg = await this.dataBase.addItem<MyRecords>('match_game', {score: scoreNum, name: this.user.name, second: this.user.second, email: this.user.email, image: this.user.image, hash: numHash});
         console.log('to add :', resreg);
       };
       console.log('from onclick 3')
     };
 
 //!----------------cansel---------------
-    this.formBtnCansel = new BtnCansel(this.formBtns.element, 'button', 'forms__btns-cansel');
-    this.formBtnCansel.element.textContent = 'cansel';
-
+    this.formBtnCansel = new BtnCansel(this.formBtns.element, 'button', 'forms__btns-cansel', 'cansel');
     this.formBtnCansel.element.onclick = () => {
-      // this.formBtnCansel.dispatch();
       this.onCanselBtnClick();
-      // console.log('from btn');
-      // console.log(this.listeners)
       //!--работает
       // const parEl = this.element.parentElement;
       // if (!parEl) throw new Error('no');
@@ -89,9 +75,30 @@ export class RegisterForm extends Control {
 
     this.formInput = new Control(this.formMain.element, 'div', 'form__input');
     this.formAvatar = new Control(this.formMain.element, 'div', 'form__avatar');
-    this.avatarImg = new Control(this.formAvatar.element, 'img');
-    this.avatarImg.element.setAttribute('src', './assets/avatar.png');
+    this.avatarImg = new AvatarImage(this.formAvatar.element);
+    // this.avatarImg.element.setAttribute('src', './assets/avatar.png');
+    this.labelInputFile = new LabelFileFeild(this.formAvatar.element);
+    this.inputFile = new InputFileFeild(this.formAvatar.element);
 
+    this.inputFile.element.onchange = async (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      const file: File = (target.files as FileList)[0];
+
+      const base64 = (files: File) =>
+        new Promise((resolve, reject) => {
+          let reader = new FileReader();
+          reader.readAsDataURL(files);
+          reader.onload = () => resolve(reader.result);
+        });
+
+      this.urlImage = await base64(file);
+      // console.log('url :', urlImage)
+      this.user.image = this.urlImage as string;
+      console.log(this.user.image);
+      this.avatarImg.element.src = this.urlImage as string;
+      // image.src = urlImage as string;
+    };
+    
     this.inputBlocks = [
       new FormInputBlock(this.formInput.element, 'First name'), 
       new FormInputBlock(this.formInput.element, 'Second name'),
@@ -127,8 +134,8 @@ export class RegisterForm extends Control {
   }
   registrationFormValidation() {
     if (this.inputBlocks[0].firstNameValidate()) {
-      this.user.first = this.inputBlocks[0].getValue();
-    } else this.user.first = 'name error';
+      this.user.name = this.inputBlocks[0].getValue();
+    } else this.user.name = 'name error';
     if (this.inputBlocks[1].lastNameValidate()) {
       this.user.second = this.inputBlocks[1].getValue();
     } else this.user.second = 'last error';

@@ -49,7 +49,8 @@ export class HeaderWrapper extends Control {
       // console.log('11111')
       const regWin = new ModalRegisterWrapper(document.body);
       regWin.registrationForm.onCanselBtnClick = () => {
-        alert('wrong input!')
+        regWin.element.remove();
+        // alert('wrong input!')
       };
       regWin.registrationForm.closeRegistrationForm = () => {
         console.log('vse polia zapolneny');
