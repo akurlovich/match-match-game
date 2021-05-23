@@ -3,22 +3,24 @@ import '../scss/main.scss';
 import '../index.html';
 import { Button } from './indexedDB/tag_buttons';
 import { DataBaseUser } from './indexedDB/base';
-import { DB_Refactoring, MyRecords } from './indexedDB/db_refactoring';
+// import { DB_Refactoring, MyRecords } from './indexedDB/db_refactoring';
+import { DataBaseIDX } from './DataBaseIDX';
+import { MyRecords } from './iMyRecords';
 
 'use strict()';
 
 class App {
-  public iDB: DB_Refactoring;
+  public iDB: DataBaseIDX;
   
   constructor(parenNode: HTMLElement) {
-    this.iDB = new DB_Refactoring();
-    this.iDB.init('testDB');
+    this.iDB = new DataBaseIDX();
+    this.iDB.init('akurlovich', 'match_game');
     
     let readAllBtn = new Button(parenNode, 'list', 'red');
     readAllBtn.onClick = async () => {
-      let arr = await this.iDB.readAll<MyRecords>('testCollection');
+      let arr = await this.iDB.readAll<MyRecords>('match_game');
       console.log(arr);
-      console.log(arr[1].age);
+      console.log('result', arr[1].score);
     };
 
     // readAllBtn.onClick = () => {
@@ -30,17 +32,71 @@ class App {
     
     let filterBtn = new Button(parenNode, 'filter', 'blue');
     filterBtn.onClick = async () => {
-      let resultFiltered = await this.iDB.readFilter<MyRecords>('testCollection', (item) => item.email.length < 6);
+      let resultFiltered = await this.iDB.readFilter<MyRecords>('match_game', (item) => item.score < 500);
       console.log('filtered ' , resultFiltered);
+    };
+
+    let sortBtn = new Button(parenNode, 'sort', 'yellow');
+    sortBtn.onClick = async () => {
+      let resultFiltered = await this.iDB.sortFilter<MyRecords>('match_game');
+      console.log('filtered ' , resultFiltered);
+      let maxScore = resultFiltered[0].score;
+      let imagesrc = resultFiltered[0].image;
+      image.src = imagesrc;
+      // alert(imagesrc);
+      // console.log('max score', resultFiltered[resultFiltered.length -1].score)
     };
     
     let addBtn = new Button(parenNode, 'add item', 'green');
-    let num = Math.floor(Math.random() * 1000);
     addBtn.onClick = async () => {
-      let newRec = await this.iDB.addItem<MyRecords>('testCollection', {age: 35, name: 'name2', second: 'mail1', email: `mail${num}`});
+      let scoreNum = Math.floor(Math.random() * 1000);
+      let numHash = (new Date).getTime();
+      let newRec = await this.iDB.addItem<MyRecords>('match_game', {score: scoreNum, name: 'ivan', second: 'Petorv', email: `${scoreNum}@tut.by`, image: urlImage as string, hash: numHash});
       console.log('newRec ' + newRec);
     };
+
+    const input = new InputFile(document.body);
+    const image = document.createElement("img");
+    document.body.appendChild(image);
+    image.style.width = "300px";
+    image.style.height = "300px";
+    image.style.borderRadius = "50%";
+    image.style.border = "2px solid black";
+    image.src = "../images/avatar.png";
+    image.style.objectFit = "cover";
+    image.style.objectPosition = "center";
+
+    let urlImage: string | unknown = 'src_image'
+
+    input.element.onchange = async function (e: Event) {
+      const target = e.target as HTMLInputElement;
+      const file: File = (target.files as FileList)[0];
+
+      const base64 = (files: File) =>
+        new Promise((resolve, reject) => {
+          let reader = new FileReader();
+          reader.readAsDataURL(files);
+          reader.onload = () => resolve(reader.result);
+        });
+
+      urlImage = await base64(file);
+      // console.log('url :', urlImage)
+      image.src = urlImage as string;
+    };
     
+  };
+};
+
+class InputFile {
+  element: HTMLInputElement;
+  constructor(
+    parentNode: HTMLElement,
+  ) {
+    this.element = document.createElement('input');
+    this.element.className = 'input_file';
+    this.element.innerHTML = 'input file';
+    this.element.setAttribute('type', 'file');
+    parentNode && parentNode.appendChild(this.element);
   };
 };
 
