@@ -36,7 +36,7 @@ export class RegisterForm extends Control {
       name: '', 
       second: '', 
       email: '',
-      image: '',
+      image: './assets/avatar.png',
       hash: 0,
     }
 
@@ -76,7 +76,6 @@ export class RegisterForm extends Control {
     this.formInput = new Control(this.formMain.element, 'div', 'form__input');
     this.formAvatar = new Control(this.formMain.element, 'div', 'form__avatar');
     this.avatarImg = new AvatarImage(this.formAvatar.element);
-    // this.avatarImg.element.setAttribute('src', './assets/avatar.png');
     this.labelInputFile = new LabelFileFeild(this.formAvatar.element);
     this.inputFile = new InputFileFeild(this.formAvatar.element);
 
@@ -92,11 +91,8 @@ export class RegisterForm extends Control {
         });
 
       this.urlImage = await base64(file);
-      // console.log('url :', urlImage)
       this.user.image = this.urlImage as string;
-      console.log(this.user.image);
       this.avatarImg.element.src = this.urlImage as string;
-      // image.src = urlImage as string;
     };
     
     this.inputBlocks = [
