@@ -116,11 +116,8 @@ export class DataBaseIDX{
     let result = store.getAll();
 
     transaction.oncomplete = () => { 
-      console.log(result.result);
-      let arr = result.result;
-      for (let key in arr[1]) {
-        console.log('ключ: ' + key + ' значение: ' + arr[1][key]);
-      }
+      console.log('from base', result.result);
+      return result.result;
     };
     transaction.onerror = () => { console.log('error getAll') };
     transaction.onabort = () => { console.log('abort getAll') };

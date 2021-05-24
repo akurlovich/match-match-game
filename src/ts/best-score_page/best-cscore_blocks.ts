@@ -5,6 +5,8 @@ export class BestScoreBlocks extends Control {
     parentNode: HTMLElement,
     tagName = "",
     className = "",
+    email = "",
+    score: number
     ) {
     super(parentNode);
     this.element.className = className;
@@ -13,20 +15,17 @@ export class BestScoreBlocks extends Control {
         <img src="./assets/avatar.png" alt="" class="name-block__avatar">
         <div class="name-block__text">
           <div class="name-block__names">Jone Smit</div>
-          <div class="name-block__email">jonesmit@gmail.com</div>
+          <div class="name-block__email">${email}</div>
         </div>
       </div>
         <div class="best-score__score-block">
         <div class="score-block__text">Score:</div>
-        <div class="score-block__score">456</div>
+        <div class="score-block__score">${score}</div>
       </div>
       `;
-
-  }
-//-------about__registration------
-  
-//-------about__register-new-----
-  // aboutRegisterNew = new Control(this.element.parentElement, 'div', 'about__circle-label');
-
+  };
+  // setEmail(email: string) {
+  //   this.
+  // }
 
 }
