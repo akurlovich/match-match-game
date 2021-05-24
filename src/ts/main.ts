@@ -2,7 +2,6 @@ import '../css/main.css';
 import '../scss/main.scss';
 import '../index.html';
 
-import { RegisterWindow } from './register-window1';
 import { routerMain } from './router/router';
 // import { Control, Control3 } from './router/block';
 import { OptionSelect } from './settings_page/options';

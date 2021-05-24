@@ -1,7 +1,4 @@
 
-import { Control } from "./block";
-import { RegisterWindow } from '../register-window1'
-import { AboutWrapper } from "../about_page/about_wrapper";
 import { AboutPage } from "../about_page/about_page";
 import { BestScorePage } from "../best-score_page/best-score_page";
 import { SettingsPage } from "../settings_page/settings_page";

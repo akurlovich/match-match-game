@@ -13,6 +13,7 @@ export class DataBaseIDX{
     };
     openRequest.onsuccess = () => {
       this.db = openRequest.result;
+      console.log('base init')
     }
   }
   
@@ -107,4 +108,22 @@ export class DataBaseIDX{
       transaction.onabort = () => { console.log('abort filtered') };
     });
   }
+
+  readAllnew(collection: string) {
+    console.log('start readall');
+    let transaction = this.db.transaction(collection, 'readonly');
+    let store = transaction.objectStore(collection);
+    let result = store.getAll();
+
+    transaction.oncomplete = () => { 
+      console.log(result.result);
+      let arr = result.result;
+      for (let key in arr[1]) {
+        console.log('ключ: ' + key + ' значение: ' + arr[1][key]);
+      }
+    };
+    transaction.onerror = () => { console.log('error getAll') };
+    transaction.onabort = () => { console.log('abort getAll') };
+  };
+
 }
