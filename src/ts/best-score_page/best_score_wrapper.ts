@@ -23,6 +23,13 @@ export class BestScoreWrapper extends Control {
     const iDB = window.indexedDB;
     const openRequest = iDB.open('akurlovich');
 
+    openRequest.onupgradeneeded = () => {
+      this.dataBase = openRequest.result;
+      let store = this.dataBase.createObjectStore('match_game', { keyPath: 'id', autoIncrement: true });
+      store.createIndex('scoreIDX', 'score');
+      store.createIndex('hashIDX', 'hash');
+    };
+
     openRequest.onsuccess = () => {
       this.dataBase = openRequest.result;
       let transaction = this.dataBase.transaction('match_game', 'readonly');
@@ -62,19 +69,6 @@ export class BestScoreWrapper extends Control {
     console.log('from class ', this.userDBlength)
 
     this.bestScoreH3 = new Control(this.element, 'h3', 'best-score__title', 'Best players:');
-    
-    // this.bestScoreBlock = new BestScoreBlocks(this.element, 'div', 'best-score__block');
-   
-    // setTimeout(() => {
-    //   this.resultFiltered = this.dataBase.readAllnew('match_game');
-    //   console.log('from page', this.resultFiltered);
-      
-    // }, 1000);
-  
-
-    // for (let i = 1; i <= 10; i++) {
-    //   this.inputBlocks.push(new BestScoreBlocks(this.element, 'div', 'best-score__block'))
-    // }
 
   }
 }
