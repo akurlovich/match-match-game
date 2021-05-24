@@ -42,7 +42,16 @@ export class BestScoreWrapper extends Control {
         console.log('complite filtered', resData.length);
         this.userDBlength = resData.length > 10 ? 10 : resData.length;
         for (let i = 0; i < this.userDBlength; i++) {
-          this.inputBlocks.push(new BestScoreBlocks(this.element, 'div', 'best-score__block', resData[i].email, resData[i].score))
+          this.inputBlocks.push(new BestScoreBlocks(
+            this.element,
+            'div',
+            'best-score__block',
+            resData[i].score,
+            resData[i].name,
+            resData[i].second,
+            resData[i].email,
+            resData[i].image
+            ))
           console.log(resData[i].score);
         }
       };

@@ -5,16 +5,19 @@ export class BestScoreBlocks extends Control {
     parentNode: HTMLElement,
     tagName = "",
     className = "",
-    email = "",
-    score: number
+    score: number,
+    name: string, 
+    second: string, 
+    email: string,
+    image: string,
     ) {
     super(parentNode);
     this.element.className = className;
     this.element.innerHTML = ` 
       <div class="best-score__name-block">
-        <img src="./assets/avatar.png" alt="" class="name-block__avatar">
+        <img src="${image}" alt="" class="name-block__avatar">
         <div class="name-block__text">
-          <div class="name-block__names">Jone Smit</div>
+          <div class="name-block__names">${name} ${second}</div>
           <div class="name-block__email">${email}</div>
         </div>
       </div>
