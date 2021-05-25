@@ -34,6 +34,7 @@ export class HeaderWrapper extends Control {
     this.startBtn.setContent('start game');
     this.startBtn.element.style.width = '120px';
     this.startBtn.element.style.marginRight = '20px';
+    this.startBtn.element.style.display = 'none';
     this.startBtn.element.onclick = () => {
       const gameWin = new GamePage(document.body);
     }
@@ -50,11 +51,14 @@ export class HeaderWrapper extends Control {
       const regWin = new ModalRegisterWrapper(document.body);
       regWin.registrationForm.onCanselBtnClick = () => {
         regWin.element.remove();
+        
         // alert('wrong input!')
       };
       regWin.registrationForm.closeRegistrationForm = () => {
         console.log('vse polia zapolneny');
         regWin.element.remove();
+        this.startBtn.element.style.display = 'flex';
+        this.btnReg.element.style.display = 'none';
       }
       // this.btnReg.setContent('staart');
       // this.btnReg.addListener(() => {
