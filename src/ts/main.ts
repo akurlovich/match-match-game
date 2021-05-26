@@ -21,7 +21,20 @@ import { TimerComponent } from './timer/timer_templare';
 
 // new GamePage(document.body);
 
+const wrapper = new Control(document.body, 'div', 'wrapper');
+document.body.append(wrapper.element)
+wrapper.element.id = 'main__container';
+
+const headerBlock = new HeaderWrapper(document.body);
+wrapper.element.append(headerBlock.element)
+
+const mainPage = new Control(document.body, 'div', 'main__block');
+wrapper.element.appendChild(mainPage.element);
+mainPage.element.id = 'main__page';
+    
+
 routerMain();
+
 
 // const timer = new TimerComponent();
 // console.log(timer.display)

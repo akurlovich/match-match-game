@@ -1,7 +1,11 @@
 
 import { AboutPage } from "../about_page/about_page";
+import { AboutWrapper } from "../about_page/about_wrapper";
 import { BestScorePage } from "../best-score_page/best-score_page";
+import { BestScoreWrapper } from "../best-score_page/best_score_wrapper";
+import { Control } from "../controls";
 import { SettingsPage } from "../settings_page/settings_page";
+import { SettingsWrapper } from "../settings_page/settings_wrapper";
 
 export const routerMain = () => {
   const navigationTo = (url: string | null) => {
@@ -12,9 +16,9 @@ export const routerMain = () => {
 
   const router = async () => {
     const routes = [
-      { path: '/', view: AboutPage },
-      { path: '/best_score', view: BestScorePage },
-      { path: '/settings', view: SettingsPage }
+      { path: '/', view: AboutWrapper },
+      { path: '/best_score', view: BestScoreWrapper },
+      { path: '/settings', view: SettingsWrapper }
     ];
   
     const potentialMatches = routes.map(route => {
@@ -35,12 +39,15 @@ export const routerMain = () => {
 
     //*------------------
 
-    // const innerWrapper = document.getElementById('main__container');
-    // if (!innerWrapper) throw Error ('No app found!!!');
+    const innerWrapper = document.getElementById('main__page');
+    if (!innerWrapper) throw Error ('No app found!!!');
 
-    document.body.innerHTML = ""; //!----------------------------костыль-------------
+    // const mainPage = new Control(innerWrapper, 'div', 'main__block');
+    // innerWrapper.appendChild(mainPage.element)
+
+    innerWrapper.innerHTML = ""; //!----------------------------костыль-------------
     
-    const view = await new match.route.view(document.body);
+    const view = await new match.route.view(innerWrapper);
 
     //*--------------
     // const registerWindowHTML = await view();
