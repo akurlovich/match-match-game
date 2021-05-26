@@ -6,7 +6,6 @@ import { routerMain } from './router/router';
 // import { Control, Control3 } from './router/block';
 import { OptionSelect } from './settings_page/options';
 import { Control } from './controls';
-import { SelectBlock } from './settings_page/select_block';
 import { ModalRegisterWrapper } from './modal_window_registration/modal_wrapper_reg';
 import { BestScoreWrapper } from './best-score_page/best_score_wrapper';
 import { HeaderWrapper } from './header/header_wrapper';

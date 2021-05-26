@@ -101,6 +101,15 @@ export class RegisterForm extends Control {
     this.inputBlocks.map((elem, index) => {
       elem.setSvgColor('red');
       elem.element.addEventListener('input', () => {
+        if ((this.inputBlocks[0].firstNameValidate()) && 
+      (this.inputBlocks[1].lastNameValidate()) &&
+      (this.inputBlocks[2].emailValidate())) {
+        this.formBtnAdd.element.style.backgroundColor = '#2196F3';
+        this.formBtnAdd.element.style.pointerEvents = 'auto'
+
+      }
+
+
         switch (index) {
           case 0: 
             elem.firstNameValidate();
