@@ -35,7 +35,7 @@ export class FormInputBlock extends Control {
       this.setSvgColor('green')
       return true;
       } else {
-        this.setSvgColor('black');
+        this.setSvgColor('red');
         return false;
       };
   };
@@ -46,7 +46,7 @@ export class FormInputBlock extends Control {
       this.setSvgColor('green')
       return true;
       } else {
-        this.setSvgColor('black');
+        this.setSvgColor('red');
         return false;
       };
   };
@@ -57,7 +57,7 @@ export class FormInputBlock extends Control {
       this.setSvgColor('green')
       return true;
       } else {
-        this.setSvgColor('black');
+        this.setSvgColor('red');
         return false;
       };
   }

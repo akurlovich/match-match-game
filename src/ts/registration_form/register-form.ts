@@ -106,8 +106,10 @@ export class RegisterForm extends Control {
       (this.inputBlocks[2].emailValidate())) {
         this.formBtnAdd.element.style.backgroundColor = '#2196F3';
         this.formBtnAdd.element.style.pointerEvents = 'auto'
-
-      }
+      } else {
+        this.formBtnAdd.element.style.backgroundColor = 'grey';
+        this.formBtnAdd.element.style.pointerEvents = 'none'
+      };
 
 
         switch (index) {
