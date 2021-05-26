@@ -114,6 +114,15 @@
   object-position: center;
 }
 
+.avatar_img--header {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .form__btns {
   align-self: flex-end;
   padding-right: 3%;

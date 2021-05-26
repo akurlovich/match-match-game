@@ -1,6 +1,7 @@
 import { Control } from "../controls";
 import { GamePage } from "../game_page/game_page";
 import { ModalRegisterWrapper } from "../modal_window_registration/modal_wrapper_reg";
+import { AvatarImageHeader } from "../registration_form/controls";
 import { HeaderRegBtn } from "./header_btns";
 import { HeaderLogo } from "./header_logo";
 import { HeaderNavigation } from "./header_nav";
@@ -11,6 +12,7 @@ export class HeaderWrapper extends Control {
   headerNav: HeaderNavigation;
   btnReg: HeaderRegBtn;
   startBtn: HeaderRegBtn;
+  avatar: AvatarImageHeader;
 
   constructor(
     parentNode: HTMLElement,
@@ -36,7 +38,9 @@ export class HeaderWrapper extends Control {
     this.startBtn.element.style.marginRight = '20px';
     this.startBtn.element.style.display = 'none';
     this.startBtn.element.onclick = () => {
-      const gameWin = new GamePage(document.body);
+      const innerWrapper = document.getElementById('main__page');
+      if (!innerWrapper) throw Error ('No app found!!!');
+      const gameWin = new GamePage(innerWrapper);
     }
 
 
@@ -59,6 +63,7 @@ export class HeaderWrapper extends Control {
         regWin.element.remove();
         this.startBtn.element.style.display = 'flex';
         this.btnReg.element.style.display = 'none';
+        this.avatar.element.style.display = 'flex';
       }
       // this.btnReg.setContent('staart');
       // this.btnReg.addListener(() => {
@@ -67,6 +72,10 @@ export class HeaderWrapper extends Control {
       // regWin.showWin();
       // console.log(this.listeners)
     };
+
+    //!--avatar
+    this.avatar = new AvatarImageHeader(this.headerContainer.element);
+    this.avatar.element.style.display = 'none';
   }
   
 

@@ -63,3 +63,18 @@ export class AvatarImage {
     parentNode && parentNode.appendChild(this.element);
   };
 };
+
+export class AvatarImageHeader {
+  element: HTMLImageElement;
+  constructor(
+    parentNode: HTMLElement,
+  ) {
+    this.element = document.createElement('img');
+    this.element.src = './assets/avatar.png';
+    // this.element.textContent = 'Choose Avatar Image...'
+    this.element.className = 'avatar_img--header';
+    // this.element.style.visibility = 'hidden';
+    // this.element.setAttribute('for', 'upload-photo');
+    parentNode && parentNode.appendChild(this.element);
+  };
+};
