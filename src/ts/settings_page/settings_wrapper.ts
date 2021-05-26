@@ -5,6 +5,12 @@ import { SelectBlockCategory, SelectBlockDifficulty } from "./select_block";
 // const selectedWrapper = new SelectWrapper(innerWrapper, 'div', 'settings__wrapper');
 
 export class SettingsWrapper extends Control {
+  selectedContainerGameType: Control;
+  h3ElementGameType: Control;
+  selectedDivGameType: SelectBlockCategory;
+  selectedContainerDificulty: Control;
+  h3ElementDificulty: Control;
+  selectedDivDificulty: SelectBlockDifficulty;
   constructor(
     parentNode: HTMLElement,
     tagName = "div",
@@ -12,16 +18,17 @@ export class SettingsWrapper extends Control {
     ) {
     super(parentNode);
     this.element.className = className;
+    // ----первый селект---
+    this.selectedContainerGameType = new Control(this.element, 'div', 'setting__game-type');
+    this.h3ElementGameType = new Control(this.selectedContainerGameType.element, 'h3', 'settings__title', 'Game cards');
+    this.selectedDivGameType = new SelectBlockCategory(this.selectedContainerGameType.element, 'select', 'settings__options');
+    console.log((this.selectedDivGameType.element as HTMLInputElement).value)
+  
+    //  -----второй селект-----
+    this.selectedContainerDificulty = new Control(this.element, 'div', 'settings__difficulty');
+    this.h3ElementDificulty = new Control(this.selectedContainerDificulty.element, 'h3', 'settings__title', 'Difficulty');
+    this.selectedDivDificulty = new SelectBlockDifficulty(this.selectedContainerDificulty.element, 'select', 'settings__options');
+  
   }
-
-  // ----первый селект---
-  selectedContainerGameType = new Control(this.element, 'div', 'setting__game-type');
-  h3ElementGameType = new Control(this.selectedContainerGameType.element, 'h3', 'settings__title', 'Game cards');
-  selectedDivGameType = new SelectBlockCategory(this.selectedContainerGameType.element, 'select', 'settings__options');
-
-  //  -----второй селект-----
-  selectedContainerDificulty = new Control(this.element, 'div', 'settings__difficulty');
-  h3ElementDificulty = new Control(this.selectedContainerDificulty.element, 'h3', 'settings__title', 'Difficulty');
-  selectedDivDificulty = new SelectBlockDifficulty(this.selectedContainerDificulty.element, 'select', 'settings__options');
-
 }
+  

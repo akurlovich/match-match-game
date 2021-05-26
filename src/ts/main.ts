@@ -15,6 +15,7 @@ import { SettingsPage } from './settings_page/settings_page';
 import { App } from './game_page/app';
 import { GamePage } from './game_page/game_page';
 import { TimerComponent } from './timer/timer_templare';
+import { SettingsWrapper } from './settings_page/settings_wrapper';
 
 'use strict()';
 
