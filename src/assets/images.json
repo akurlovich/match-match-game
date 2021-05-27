@@ -6,5 +6,24 @@
       "second.jpg",
       "third.jpg"
     ]
+  },
+  {
+    "category": "pets",
+    "images": [
+      "001-dog.png",
+      "002-cat.png",
+      "003-turtle.png",
+      "004-bird-house.png",
+      "005-bird.png",
+      "006-fish.png"
+    ]
+  },
+  {
+    "category": "country",
+    "images": [
+      "001-paraguay.png",
+      "002-senegal.png",
+      "003-congo.png"
+    ]
   }
 ]

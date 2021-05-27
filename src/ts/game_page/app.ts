@@ -16,10 +16,20 @@ export class App {
   }
   async start() {
     const res = await fetch('../assets/images.json');
-    const categories: ImageCategoryModel[] = await res.json();
+    console.log('from fetch :', res);
 
-    const cat = categories[0];
+    const categories: ImageCategoryModel[] = await res.json();
+    console.log('from res.json: ', categories)
+
+    const cat = categories[1];
+    console.log('from cat: ', categories[0])
     const images = cat.images.map((name) => `${cat.category}/${name}`);
-    this.game.newGame(images);
+    console.log('from images: ', images)
+    const imagesArr = [];
+    for (let i = 0; i < 5; i++) {
+      imagesArr.push(images[i]);
+    }
+    console.log('from new arr: ', imagesArr)
+    this.game.newGame(imagesArr);
   }
 }

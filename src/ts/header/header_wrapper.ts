@@ -36,7 +36,7 @@ export class HeaderWrapper extends Control {
     this.startBtn.setContent('start game');
     this.startBtn.element.style.width = '120px';
     this.startBtn.element.style.marginRight = '20px';
-    this.startBtn.element.style.display = 'none';
+    // this.startBtn.element.style.display = 'none';
     this.startBtn.element.onclick = () => {
       const innerWrapper = document.getElementById('main__page');
       if (!innerWrapper) throw Error ('No app found!!!');
