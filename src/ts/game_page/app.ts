@@ -26,7 +26,7 @@ export class App {
     const images = cat.images.map((name) => `${cat.category}/${name}`);
     console.log('from images: ', images)
     const imagesArr = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       imagesArr.push(images[i]);
     }
     console.log('from new arr: ', imagesArr)

@@ -28,6 +28,7 @@ export class Card extends BaseBlock {
   }
 
   flipToBack() {
+    console.log('to back')
     this.isFlipped = true;
     return this.flip(true);
   }
@@ -41,12 +42,13 @@ export class Card extends BaseBlock {
     return new Promise((resolve) => {
       console.log('toggle');
       // this.element.classList.toggle(FLIP_CLASS, isFront);
+      this.element.classList.toggle(FLIP_CLASS);
 
-      if (this.element.classList.contains(FLIP_CLASS)) {
-        this.element.classList.remove(FLIP_CLASS);
-      } else {
-        this.element.classList.add(FLIP_CLASS);
-      }
+      // if (this.element.classList.contains(FLIP_CLASS)) {
+      //   this.element.classList.remove(FLIP_CLASS);
+      // } else {
+      //   this.element.classList.add(FLIP_CLASS);
+      // }
 
 
       this.element.addEventListener('transitionend', () => resolve(), {

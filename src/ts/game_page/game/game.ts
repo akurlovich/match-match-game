@@ -3,12 +3,13 @@ import { Card } from "../card/card";
 import { delay } from "../delay";
 import { CardsField } from "../game-field/cards_field";
 
-const FLIP_DELAY = 3000;
+const FLIP_DELAY = 500;
 
 export class Game extends BaseBlock {
   private readonly cardField: CardsField;
   private activeCard?: Card;
   private isAnimation = false;
+  counter: number = 0;
 
   constructor() {
     super();
@@ -34,10 +35,17 @@ export class Game extends BaseBlock {
     this.cardField.addCards(cards);
   }
 
+
   private async cardHandler(card: Card) {
     console.log(this.isAnimation, card.isFlipped);
-    if (this.isAnimation) return;
-    if (!card.isFlipped) return;
+    if (this.isAnimation) {
+      // console.log('22222')
+      return;
+    }
+    if (!card.isFlipped) {
+      // console.log('111111')
+      return;
+    }
     
     this.isAnimation = true;
 
@@ -45,6 +53,7 @@ export class Game extends BaseBlock {
 
     if (!this.activeCard) {
       this.activeCard = card;
+      // console.log('hi')
       this.isAnimation = false;
       return;
     };
@@ -52,6 +61,9 @@ export class Game extends BaseBlock {
     if (this.activeCard.image != card.image) {
       await delay(FLIP_DELAY);
       await Promise.all([this.activeCard.flipToBack(), card.flipToBack()])  
+    } else {
+      this.counter++;
+      console.log(this.counter);
     }
 
     this.activeCard = undefined;
