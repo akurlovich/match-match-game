@@ -13,11 +13,6 @@ export class GamePage extends Control {
     this.element.className = 'game_wrapper';
     this.element.id = 'game_wrapper';
 
-    // const timer = new TimerWrapper(this.element);
-    // timer.setTime(40);
-    // timer.timer();
-    
-
     new App(this.element).start();
 
   }

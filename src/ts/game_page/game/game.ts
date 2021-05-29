@@ -1,4 +1,5 @@
 import { TimerWrapper } from "../../timer/timer_wrapper";
+import { WinPopupWrapper } from "../../win_popup/win_popup_wrapper";
 import { BaseBlock } from "../baseBlock";
 import { Card } from "../card/card";
 import { delay } from "../delay";
@@ -65,6 +66,8 @@ export class Game extends BaseBlock {
       if (this.counter === 2) {
         this.timer.stopTime();
         console.log('timer')
+        console.log(this.timer.getTime());
+        const popup = new WinPopupWrapper(document.body, this.timer.getTime());
       }
     };
 

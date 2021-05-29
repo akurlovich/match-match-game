@@ -8,6 +8,8 @@ export class TimerWrapper extends Control {
   counter!: number;
   coutNum!: number | string;
   playTime!: NodeJS.Timeout;
+  countSec!: number | string;
+  countMin: number = 0;
   constructor(
     parentNode: HTMLElement,
     tagName = "div",
@@ -43,21 +45,32 @@ export class TimerWrapper extends Control {
   gameTime() {
     this.counter++;
     if (this.counter >= 10) {
-      this.coutNum = this.counter;
+      this.countSec = this.counter;
     } else {
-      this.coutNum = '0' + this.counter;
+      this.countSec = '0' + this.counter;
+    };
+    if (this.counter >= 60) {
+      this.countMin = (~~(this.counter/60))
+      this.countSec = this.counter % 60;
+      if (this.countSec < 10) this.countSec = '0' + (this.counter % 60);
     }
     this.element.innerHTML = `
       <div class="timer__block">
-      <span>00 : ${this.coutNum}</span>
+      <span>0${this.countMin} : ${this.countSec}</span>
       </div>
       `;
     this.playTime = setTimeout(() => {
       this.gameTime();
     }, 1000)
-  }
+  };
+
   stopTime() {
     clearTimeout(this.playTime);
+  };
+
+  getTime() {
+    return this.counter;
   }
+
 
 }
