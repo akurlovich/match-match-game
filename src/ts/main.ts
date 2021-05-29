@@ -16,6 +16,7 @@ import { App } from './game_page/app';
 import { GamePage } from './game_page/game_page';
 import { TimerComponent } from './timer/timer_templare';
 import { SettingsWrapper } from './settings_page/settings_wrapper';
+import { WinPopupWrapper } from './win_popup/win_popup_wrapper';
 
 'use strict()';
 
@@ -34,6 +35,8 @@ mainPage.element.id = 'main__page';
     
 
 routerMain();
+
+const popup = new WinPopupWrapper(document.body, 25)
 
 
 // const timer = new TimerComponent();

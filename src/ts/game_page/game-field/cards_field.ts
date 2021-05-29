@@ -1,7 +1,7 @@
 import { BaseBlock } from "../baseBlock";
 import { Card } from "../card/card";
 
-const SHOW_TIME = 2;
+// const SHOW_TIME = 2;
 
 export class CardsField extends BaseBlock {
   private cards: Card[] = [];
@@ -20,6 +20,6 @@ export class CardsField extends BaseBlock {
     this.cards.forEach((card) => this.element.appendChild(card.element));
     setTimeout(() => {
       this.cards.forEach((card) => card.flipToBack());
-    }, SHOW_TIME * 1000);
+    }, 3000);
   }
 }

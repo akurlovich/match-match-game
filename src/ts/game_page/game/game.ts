@@ -4,7 +4,7 @@ import { Card } from "../card/card";
 import { delay } from "../delay";
 import { CardsField } from "../game-field/cards_field";
 
-const FLIP_DELAY = 500;
+// const FLIP_DELAY = 500;
 
 export class Game extends BaseBlock {
   private readonly cardField: CardsField;
@@ -16,7 +16,7 @@ export class Game extends BaseBlock {
   constructor() {
     super();
     this.timer = new TimerWrapper(this.element);
-    this.timer.setTime(40);
+    this.timer.setTime(5);
     this.timer.timer();
     
     this.cardField = new CardsField('div', 'card-field');
@@ -39,19 +39,12 @@ export class Game extends BaseBlock {
     });
     
     this.cardField.addCards(cards);
-  }
-
+  };
 
   private async cardHandler(card: Card) {
     console.log(this.isAnimation, card.isFlipped);
-    if (this.isAnimation) {
-      // console.log('22222')
-      return;
-    }
-    if (!card.isFlipped) {
-      // console.log('111111')
-      return;
-    }
+    if (this.isAnimation) return;
+    if (!card.isFlipped) return;
     
     this.isAnimation = true;
 
@@ -59,21 +52,23 @@ export class Game extends BaseBlock {
 
     if (!this.activeCard) {
       this.activeCard = card;
-      // console.log('hi')
       this.isAnimation = false;
       return;
     };
     
     if (this.activeCard.image != card.image) {
-      await delay(FLIP_DELAY);
+      await delay(300);
       await Promise.all([this.activeCard.flipToBack(), card.flipToBack()])  
     } else {
       this.counter++;
       console.log(this.counter);
-    }
+      if (this.counter === 2) {
+        this.timer.stopTime();
+        console.log('timer')
+      }
+    };
 
     this.activeCard = undefined;
     this.isAnimation = false;
-  }
-  
+  };
 }
