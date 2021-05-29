@@ -1,3 +1,4 @@
+import { TimerWrapper } from "../../timer/timer_wrapper";
 import { BaseBlock } from "../baseBlock";
 import { Card } from "../card/card";
 import { delay } from "../delay";
@@ -10,9 +11,14 @@ export class Game extends BaseBlock {
   private activeCard?: Card;
   private isAnimation = false;
   counter: number = 0;
+  timer: TimerWrapper;
 
   constructor() {
     super();
+    this.timer = new TimerWrapper(this.element);
+    this.timer.setTime(40);
+    this.timer.timer();
+    
     this.cardField = new CardsField('div', 'card-field');
     this.element.appendChild(this.cardField.element);
   }

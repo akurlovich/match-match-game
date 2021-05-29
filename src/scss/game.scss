@@ -40,7 +40,9 @@
   align-items: center;
   justify-content: space-around;
   perspective: 25rem;
-  cursor: pointer;
+  cursor: default;
+  pointer-events: none;
+
 
   // &:hover > .card {
   //   transform: translateZ(2rem);
@@ -94,6 +96,11 @@
   background-size: cover;
   transform: rotateY(180deg);
 
+}
+
+.flipped {
+  pointer-events: all;
+  cursor: pointer;
 }
 
 .timer__container {

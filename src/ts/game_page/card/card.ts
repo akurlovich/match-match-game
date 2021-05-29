@@ -1,7 +1,7 @@
 import { BaseBlock } from '../baseBlock';
 import './card.scss';
 
-const FLIP_CLASS = 'flipped';
+// const FLIP_CLASS = 'flipped';
 
 export class Card extends BaseBlock {
   private cardItemFront: BaseBlock;
@@ -42,7 +42,7 @@ export class Card extends BaseBlock {
     return new Promise((resolve) => {
       console.log('toggle');
       // this.element.classList.toggle(FLIP_CLASS, isFront);
-      this.element.classList.toggle(FLIP_CLASS);
+      this.element.classList.toggle('flipped');
 
       // if (this.element.classList.contains(FLIP_CLASS)) {
       //   this.element.classList.remove(FLIP_CLASS);

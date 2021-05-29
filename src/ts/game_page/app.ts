@@ -1,3 +1,4 @@
+import { TimerWrapper } from "../timer/timer_wrapper";
 import { BaseBlock } from "./baseBlock";
 import { Card } from "./card/card";
 import { CardsField } from "./game-field/cards_field";
@@ -6,8 +7,13 @@ import { ImageCategoryModel } from "./models/image_category_mogel";
 
 export class App {
   private readonly game: Game;
+  // timer: TimerWrapper;
 
   constructor(private readonly rootElement: HTMLElement) {
+    
+    // this.timer = new TimerWrapper(this.rootElement);
+    // this.timer.setTime(40);
+    // this.timer.timer();
 
     this.game = new Game();
     this.game.element.classList.add('game_wrapper');
@@ -15,6 +21,7 @@ export class App {
   
   }
   async start() {
+    
     const res = await fetch('../assets/images.json');
     console.log('from fetch :', res);
 
