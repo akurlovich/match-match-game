@@ -1,4 +1,3 @@
-import { Control } from "./controls";
 
 export class Observer {
   listeners: any[];
