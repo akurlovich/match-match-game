@@ -1,5 +1,4 @@
 import { Control } from "../controls";
-import { HeaderRegBtn } from "./header_btns";
 import { HeaderLinks } from "./header_links";
 
 export class HeaderNavigation extends Control {
@@ -21,13 +20,13 @@ export class HeaderNavigation extends Control {
 //!--links----
     this.navLinkAbout = new HeaderLinks(this.element, 'a', './assets/about.svg', 'About Game', '/');
     this.navUl.element.appendChild(this.navLinkAbout.element);
+    this.navLinkAbout.element.classList.add('header_nav_active');
 
     this.navLinkScore = new HeaderLinks(this.element, 'a', './assets/score.svg', 'Best Score', '/best_score');
     this.navUl.element.appendChild(this.navLinkScore.element);
 
     this.navLinkSettings = new HeaderLinks(this.element, 'a', './assets/settings.svg', 'Game Settings', '/settings');
     this.navUl.element.appendChild(this.navLinkSettings.element);
-
 
   }
 }

@@ -1,8 +1,5 @@
 import { BaseBlock } from '../baseBlock';
 import './card.scss';
-
-// const FLIP_CLASS = 'flipped';
-
 export class Card extends BaseBlock {
   private cardItemFront: BaseBlock;
   private cardItemBack: BaseBlock;
@@ -10,7 +7,6 @@ export class Card extends BaseBlock {
 
   isFlipped = false;
 
-  // constructor(private readonly rootElement: HTMLElement, readonly image?: string) {
   constructor(readonly image?: string) {
     super();
     this.element = document.createElement('div');
@@ -28,7 +24,7 @@ export class Card extends BaseBlock {
   }
 
   flipToBack() {
-    console.log('to back')
+    // console.log('to back')
     this.isFlipped = true;
     return this.flip(true);
   }
@@ -40,16 +36,8 @@ export class Card extends BaseBlock {
 
   private flip(isFront = false): Promise<void> {
     return new Promise((resolve) => {
-      console.log('toggle');
-      // this.element.classList.toggle(FLIP_CLASS, isFront);
+      // console.log('toggle');
       this.element.classList.toggle('flipped');
-
-      // if (this.element.classList.contains(FLIP_CLASS)) {
-      //   this.element.classList.remove(FLIP_CLASS);
-      // } else {
-      //   this.element.classList.add(FLIP_CLASS);
-      // }
-
 
       this.element.addEventListener('transitionend', () => resolve(), {
         once: true,

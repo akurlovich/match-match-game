@@ -1,8 +1,4 @@
 import { Control } from "../controls";
-import { ModalRegisterWrapper } from "../modal_window_registration/modal_wrapper_reg";
-import { RegisterWindow } from "../registration_form/___register-window";
-import { AboutBlocks } from "./about_blocks";
-
 export class AboutContainer extends Control {
   aboutBlockRegistration: Control;
   aboutRegistrationCircle: Control;
@@ -46,18 +42,8 @@ export class AboutContainer extends Control {
     this.aboutBlockRegisterNew = new Control(this.element, 'div', 'about__register-new');
     this.aboutBlockRegisterNewImg = new Control(this.aboutBlockRegisterNew.element, 'img', 'registr-img');
     (this.aboutBlockRegisterNewImg.element as HTMLImageElement).src = './assets/reg-img.svg'
-    // this.aboutBlockRegisterNewImg = new Image();
-    // this.aboutBlockRegisterNewImg.className = 'registr-img';
-    // this.aboutBlockRegisterNewImg.src = './assets/reg-img.svg';
     this.aboutBlockRegisterNew.element.appendChild(this.aboutBlockRegisterNewImg.element);
-    this.aboutBlockRegisterNewImg.addListener(() => console.log('listener1'));
-    this.aboutBlockRegisterNewImg.element.onclick = () => {
-      // this.aboutBlockRegisterNewImg.dispatch();
-      const regWin = new ModalRegisterWrapper(document.body);
-      
-      document.body.appendChild(regWin.element);
-      
-    }
+   
 
   //--------about__configuration-----
     this.aboutBlockConfiguration = new Control(this.element, 'div', 'about__configuration');
@@ -87,8 +73,5 @@ export class AboutContainer extends Control {
     this.aboutBlockCardsFieldImg = new Control(this.aboutBlockCardsField.element, 'img', 'about__card-front');
     (this.aboutBlockCardsFieldImg.element as HTMLImageElement).src = './assets/about_CF.svg';
 
-  
-
-  
   }
 }

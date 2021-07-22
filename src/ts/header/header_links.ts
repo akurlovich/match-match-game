@@ -8,8 +8,6 @@ export class HeaderLinks extends Control {
   constructor(
     parentNode: HTMLElement,
     tagName = "a",
-    // className = "",
-    // content = "",
     srcLink = '',
     textLink = '',
     hrefLink = ''
@@ -29,7 +27,5 @@ export class HeaderLinks extends Control {
         <p href=${hrefLink} data-link>${textLink}</p>
       </li>
       `;
-    
-
   }
 }

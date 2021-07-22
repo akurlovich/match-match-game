@@ -15,7 +15,9 @@
       "003-turtle.png",
       "004-bird-house.png",
       "005-bird.png",
-      "006-fish.png"
+      "006-fish.png",
+      "007-Dog-house.png",
+      "008-hamster.png"
     ]
   },
   {
@@ -23,7 +25,12 @@
     "images": [
       "001-paraguay.png",
       "002-senegal.png",
-      "003-congo.png"
+      "003-congo.png",
+      "004-estonia.png",
+      "005-georgia.png",
+      "006-ghana.png",
+      "007-jersey.png",
+      "008-madagascar.png"
     ]
   }
 ]

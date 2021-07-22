@@ -27,8 +27,4 @@ export class BestScoreBlocks extends Control {
       </div>
       `;
   };
-  // setEmail(email: string) {
-  //   this.
-  // }
-
 }

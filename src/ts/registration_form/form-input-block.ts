@@ -30,7 +30,7 @@ export class FormInputBlock extends Control {
   }
 
   firstNameValidate() {
-    const regExp = /^[a-zA-Zа-яА-Я][a-zA-Z0-9\s]{1,30}$/;
+    const regExp = /^[^0-9][^(~!@#$%*&()_—+=|:;"'`<>,.?\\/\\^\s)]{1,30}$/;
     if (regExp.test((this.inputItem.element as HTMLInputElement).value)) {
       this.setSvgColor('green')
       return true;
@@ -41,7 +41,7 @@ export class FormInputBlock extends Control {
   };
 
   lastNameValidate() {
-    const regExp = /^[a-zA-Zа-яА-Я][a-zA-Z0-9\s]{1,30}$/;
+    const regExp = /^[^0-9][^(~!@#$%*&()_—+=|:;"'`<>,.?\\/\\^\s)]{1,30}$/;
     if (regExp.test((this.inputItem.element as HTMLInputElement).value)) {
       this.setSvgColor('green')
       return true;
@@ -74,8 +74,4 @@ export class FormInputBlock extends Control {
       </svg>
     `;
   }
-  
-  // showParent() {
-    //   console.log(this.element.parentElement);
-    // }
 } 

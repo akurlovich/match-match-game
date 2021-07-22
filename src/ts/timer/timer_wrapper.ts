@@ -1,10 +1,6 @@
 import { Control } from "../controls";
-import { Timer } from "./timer";
-import { TimerComponent } from "./timer_templare";
 
 export class TimerWrapper extends Control {
-  // timer: TimerComponent;
-  // timer: TimerComponent;
   counter!: number;
   coutNum!: number | string;
   playTime!: NodeJS.Timeout;
@@ -35,6 +31,7 @@ export class TimerWrapper extends Control {
       </div>
       `;
     if (this.counter < 0) {
+      this.counter =0;
       this.gameTime();
       return;
     }

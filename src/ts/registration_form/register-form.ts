@@ -48,13 +48,17 @@ export class RegisterForm extends Control {
 //!----------------ADD----
     this.formBtnAdd = new Control(this.formBtns.element, 'button', 'forms__btns-add', 'add user');
     this.formBtnAdd.onClick = async () => {
-      let scoreNum = Math.floor(Math.random() * 1000);
+      // let scoreNum = Math.floor(Math.random() * 1000);
       let numHash = (new Date).getTime();
       this.registrationFormValidation();
       if (this.regFormValid) {
+        sessionStorage.setItem('name', this.user.name);
+        sessionStorage.setItem('second', this.user.second);
+        sessionStorage.setItem('email', this.user.email);
+        sessionStorage.setItem('image', this.user.image);
         this.closeRegistrationForm();
         let resreg = await this.dataBase.addItem<MyRecords>('match_game', {
-          score: scoreNum, 
+          score: 0, 
           name: this.user.name, 
           second: this.user.second, 
           email: this.user.email, 
@@ -95,9 +99,6 @@ export class RegisterForm extends Control {
       new FormInputBlock(this.formInput.element, 'E-mail')
     ];
 
-//!------- const regPart1 = /^(([^<>()[]\.;:\s@"]+(\.[^<>()[\]\\.;:\s@"]+))|(".+"))/;
-//!------- const regPart2 = /@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-
     this.inputBlocks.map((elem, index) => {
       elem.setSvgColor('red');
       elem.element.addEventListener('input', () => {
@@ -110,7 +111,6 @@ export class RegisterForm extends Control {
         this.formBtnAdd.element.style.backgroundColor = 'grey';
         this.formBtnAdd.element.style.pointerEvents = 'none'
       };
-
 
         switch (index) {
           case 0: 
@@ -127,19 +127,11 @@ export class RegisterForm extends Control {
     })
   }
   registrationFormValidation() {
-    if (this.inputBlocks[0].firstNameValidate()) {
-      this.user.name = this.inputBlocks[0].getValue();
-    } else this.user.name = 'name error';
-    if (this.inputBlocks[1].lastNameValidate()) {
-      this.user.second = this.inputBlocks[1].getValue();
-    } else this.user.second = 'last error';
-    if (this.inputBlocks[2].emailValidate()) {
-      this.user.email = this.inputBlocks[2].getValue();
-    } else this.user.email = 'email error';
-    // console.log(this.user);
+    if (this.inputBlocks[0].firstNameValidate()) this.user.name = this.inputBlocks[0].getValue();
+    if (this.inputBlocks[1].lastNameValidate()) this.user.second = this.inputBlocks[1].getValue();
+    if (this.inputBlocks[2].emailValidate()) this.user.email = this.inputBlocks[2].getValue();
     this.regFormValid = ((this.inputBlocks[0].firstNameValidate()) && 
       (this.inputBlocks[1].lastNameValidate()) &&
       (this.inputBlocks[2].emailValidate()));
-    console.log('from registratoin form valitation', this.regFormValid);
   }
 } 

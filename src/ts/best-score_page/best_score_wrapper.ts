@@ -1,12 +1,9 @@
 import { Control } from "../controls";
-import { DataBaseIDX } from "../DB/DataBaseIDX";
 import { MyRecords } from "../DB/iMyRecords";
 import { BestScoreBlocks } from "./best-cscore_blocks";
-import { BestScorePage } from "./best-score_page";
 
 export class BestScoreWrapper extends Control {
   bestScoreH3: Control;
-  // bestScoreBlock: BestScoreBlocks;
   inputBlocks: BestScoreBlocks[] = [];
   userDBlength!: number;
   dataBase!: IDBDatabase;
@@ -46,7 +43,7 @@ export class BestScoreWrapper extends Control {
       };
 
       transaction.oncomplete = () => {
-        console.log('complite filtered', resData.length);
+        // console.log('complite filtered', resData.length);
         this.userDBlength = resData.length > 10 ? 10 : resData.length;
         for (let i = 0; i < this.userDBlength; i++) {
           this.inputBlocks.push(new BestScoreBlocks(
@@ -59,14 +56,14 @@ export class BestScoreWrapper extends Control {
             resData[i].email,
             resData[i].image
             ))
-          console.log(resData[i].score);
+          // console.log(resData[i].score);
         }
       };
       transaction.onerror = () => { console.log('error filtered') };
       transaction.onabort = () => { console.log('abort filtered') };
     }
     
-    console.log('from class ', this.userDBlength)
+    // console.log('from class ', this.userDBlength)
 
     this.bestScoreH3 = new Control(this.element, 'h3', 'best-score__title', 'Best players:');
 

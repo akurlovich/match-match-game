@@ -13,7 +13,7 @@ export class DataBaseIDX{
     };
     openRequest.onsuccess = () => {
       this.db = openRequest.result;
-      console.log('base init')
+      // console.log('base init')
     }
   }
   
@@ -25,11 +25,11 @@ export class DataBaseIDX{
   
       transaction.oncomplete = () => { 
         resolve(result.result);
-        console.log('complite getAll')
+        // console.log('complite getAll')
       };
       transaction.onerror = () => {
         reject(result.error);
-        console.log('error getAll');
+        // console.log('error getAll');
       };
       transaction.onabort = () => { console.log('abort getAll') };
     })
@@ -44,7 +44,7 @@ export class DataBaseIDX{
         res.result;
         let newRecord: RecordType = {...data, id:res.result};
         let result = store.put(newRecord);
-        console.log(result);
+        // console.log(result);
         result.onsuccess = () => console.log('complite ', result.result);
         result.onerror = () => console.log('error ', result.error);
       }
@@ -57,18 +57,14 @@ export class DataBaseIDX{
       let store = transaction.objectStore(collection);
       // let result = store.get(3); //!--возвращает базу только с id=3
       let result = store.index('scoreIDX').openCursor(null, 'next');
-      let resData: Array<any> = [];
+      let resData: Array<RecordType> = [];
   
       result.onsuccess = () => {
         let cursor = result.result;
         if (cursor) {
-          // console.log(cursor.value);
-          // if (cursor.value.name == 'mane3') {
-          //   resData.push(cursor.value)
-          // }
           let currentValue: RecordType = cursor.value;
           if (filter(currentValue)) {
-            console.log(currentValue);
+            // console.log(currentValue);
             resData.push(currentValue);
           };
           cursor.continue();
@@ -77,7 +73,7 @@ export class DataBaseIDX{
   
       transaction.oncomplete = () => {
         resolve(resData);
-        console.log('complite filtered');
+        // console.log('complite filtered');
       };
       transaction.onerror = () => { console.log('error filtered') };
       transaction.onabort = () => { console.log('abort filtered') };
@@ -102,7 +98,7 @@ export class DataBaseIDX{
 
       transaction.oncomplete = () => {
         resolve(resData);
-        console.log('complite filtered');
+        // console.log('complite filtered');
       };
       transaction.onerror = () => { console.log('error filtered') };
       transaction.onabort = () => { console.log('abort filtered') };
@@ -110,13 +106,13 @@ export class DataBaseIDX{
   }
 
   readAllnew(collection: string) {
-    console.log('start readall');
+    // console.log('start readall');
     let transaction = this.db.transaction(collection, 'readonly');
     let store = transaction.objectStore(collection);
     let result = store.getAll();
 
     transaction.oncomplete = () => { 
-      console.log('from base', result.result);
+      // console.log('from base', result.result);
       return result.result;
     };
     transaction.onerror = () => { console.log('error getAll') };

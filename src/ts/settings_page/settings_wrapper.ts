@@ -1,9 +1,5 @@
 import { Control } from "../controls";
 import { SelectBlockCategory, SelectBlockDifficulty } from "./select_block";
-
-//!--подключаем в main.js----
-// const selectedWrapper = new SelectWrapper(innerWrapper, 'div', 'settings__wrapper');
-
 export class SettingsWrapper extends Control {
   selectedContainerGameType: Control;
   h3ElementGameType: Control;
@@ -24,8 +20,8 @@ export class SettingsWrapper extends Control {
     this.selectedDivGameType = new SelectBlockCategory(this.selectedContainerGameType.element, 'select', 'settings__options');
     this.selectedDivGameType.element.onchange = () => {
       let category = (this.selectedDivGameType.element as HTMLInputElement).value;
-      localStorage.setItem('category', category)
-      console.log((this.selectedDivGameType.element as HTMLInputElement).value)
+      sessionStorage.setItem('category', category)
+      // console.log((this.selectedDivGameType.element as HTMLInputElement).value)
     }
   
     //  -----второй селект-----
@@ -34,8 +30,8 @@ export class SettingsWrapper extends Control {
     this.selectedDivDificulty = new SelectBlockDifficulty(this.selectedContainerDificulty.element, 'select', 'settings__options');
     this.selectedDivDificulty.element.onchange = () => {
       let difficulty = (this.selectedDivDificulty.element as HTMLInputElement).value;
-      localStorage.setItem('difficulty', difficulty)
-      console.log((this.selectedDivDificulty.element as HTMLInputElement).value)
+      sessionStorage.setItem('difficulty', difficulty)
+      // console.log((this.selectedDivDificulty.element as HTMLInputElement).value)
     }
   
   }

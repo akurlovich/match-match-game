@@ -1,14 +1,15 @@
+import { Control } from "./controls";
 
 export class Observer {
-  listeners: any[];
+  listeners: [];
  
   constructor() {
     this.listeners = [];
   }
   addListener(callback: () => void) {
-    this.listeners.push(callback);
+    this.listeners.push();
   }
   dispatch() {
-    this.listeners.forEach(it => it());
+    
   }
 }

@@ -33,15 +33,18 @@
 }
 
 .card-container {
-  height: 10rem;
+  height: 11rem;
   margin: 1%;
-  flex: 1 0 18%;
+  flex: 0 0 20%;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   perspective: 25rem;
   cursor: default;
   pointer-events: none;
+  transition: all 0.1s ease;
+  background-color: transparent;
 
 
   // &:hover > .card {
@@ -101,6 +104,18 @@
 .flipped {
   pointer-events: all;
   cursor: pointer;
+}
+
+.wrong-card {
+  background-color: red;
+  background-blend-mode: screen;
+  transition: all 0.1s ease;
+}
+
+.right-card {
+  background-color: green;
+  background-blend-mode: screen;
+  transition: all 0.1s ease;
 }
 
 .timer__container {

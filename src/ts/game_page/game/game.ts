@@ -4,24 +4,26 @@ import { BaseBlock } from "../baseBlock";
 import { Card } from "../card/card";
 import { delay } from "../delay";
 import { CardsField } from "../game-field/cards_field";
-
-// const FLIP_DELAY = 500;
-
 export class Game extends BaseBlock {
   private readonly cardField: CardsField;
   private activeCard?: Card;
   private isAnimation = false;
   counter: number = 0;
   timer: TimerWrapper;
+  wrongCounter: number = 0;
+  popup!: WinPopupWrapper;
 
   constructor() {
     super();
     this.timer = new TimerWrapper(this.element);
-    this.timer.setTime(5);
+    this.timer.setTime(31);
     this.timer.timer();
     
     this.cardField = new CardsField('div', 'card-field');
     this.element.appendChild(this.cardField.element);
+
+    this.popup = new WinPopupWrapper(document.body);
+    this.popup.element.style.display = 'none';
   }
   newGame (images: string[]) {
     this.cardField.clear();
@@ -33,9 +35,7 @@ export class Game extends BaseBlock {
 
     cards.forEach((card) => {
       card.element.addEventListener('click', () => {
-        console.log('click');
         this.cardHandler(card);
-
       });
     });
     
@@ -43,7 +43,6 @@ export class Game extends BaseBlock {
   };
 
   private async cardHandler(card: Card) {
-    console.log(this.isAnimation, card.isFlipped);
     if (this.isAnimation) return;
     if (!card.isFlipped) return;
     
@@ -58,16 +57,31 @@ export class Game extends BaseBlock {
     };
     
     if (this.activeCard.image != card.image) {
+      this.activeCard.element.classList.add('wrong-card');
+      card.element.classList.add('wrong-card');
+      setTimeout(() => {
+        if (!this.activeCard) throw new Error('no card');
+        this.activeCard.element.classList.remove('wrong-card');
+        card.element.classList.remove('wrong-card');
+      }, 200);
+      this.wrongCounter++;
       await delay(300);
-      await Promise.all([this.activeCard.flipToBack(), card.flipToBack()])  
+      await Promise.all([this.activeCard.flipToBack(), card.flipToBack()]);
     } else {
+      this.activeCard.element.classList.add('right-card');
+      card.element.classList.add('right-card');
+      setTimeout(() => {
+        if (!this.activeCard) throw new Error('no card');
+        this.activeCard.element.classList.remove('right-card');
+        card.element.classList.remove('right-card');
+      }, 200);
       this.counter++;
-      console.log(this.counter);
-      if (this.counter === 2) {
+      let indexDifficalty: number | string | null = sessionStorage.getItem('difficulty');
+      if (indexDifficalty === null) indexDifficalty = 2;
+      if (this.counter === (+indexDifficalty * 2)) {
         this.timer.stopTime();
-        console.log('timer')
-        console.log(this.timer.getTime());
-        const popup = new WinPopupWrapper(document.body, this.timer.getTime());
+        this.popup.setCounter(this.timer.getTime(), this.wrongCounter, this.counter);
+        this.popup.element.style.display = 'block';
       }
     };
 
